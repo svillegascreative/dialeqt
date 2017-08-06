@@ -1,31 +1,55 @@
 class WordsController < ApplicationController
 
   def index
-    #code
+    @words = Word.all
   end
 
   def show
-    #code
+    find_word
   end
 
   def new
-    #code
+    @word = Word.new
   end
 
   def create
-    #code
+    @word = Word.new(word_params)
+
+    if @word.save
+      redirect_to word_url
+    else
+      render :new
+    end
   end
 
   def edit
-    #code
+    find_word
   end
 
   def update
-    #code
+    find_word
+
+    if @word.update_attributes(word_params)
+      redirect_to @word
+    else
+      render :edit
+    end
   end
 
   def destroy
-    #code
+    find_word
+    @word.destroy
+    redirect_to root_url
+  end
+
+private
+
+  def find_word
+    @word = Word.find(params[:id])
+  end
+
+  def word_params
+    params.require(:word).permit(:word)
   end
 
 end
