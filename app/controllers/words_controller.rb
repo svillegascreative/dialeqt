@@ -16,7 +16,7 @@ class WordsController < ApplicationController
     @word = Word.new(word_params)
 
     if @word.save
-      redirect_to word_url
+      redirect_to @word
     else
       render :new
     end
@@ -49,7 +49,7 @@ private
   end
 
   def word_params
-    params.require(:word).permit(:word)
+    params.require(:word).permit(:name)
   end
 
 end
