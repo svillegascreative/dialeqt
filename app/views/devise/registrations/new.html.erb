@@ -10,14 +10,17 @@
 
   <div class="form-field">
     <%= f.label :username %><br />
+    <div class="field-helper">Username can contain any combination of letters, numbers, and the symbols '.' and '_' (but it cannot start or end with these symbols). Username must be between 4-20 characters long.</div>
     <%= f.email_field :username %>
   </div>
 
   <div class="form-field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <div class="field-helper">
+      <%= @minimum_password_length %> characters minimum.
+    </div>
+    <% end %>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
