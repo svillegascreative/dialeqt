@@ -1,0 +1,7 @@
+<ul class="words-list">
+  <% @words.each do |word| %>
+    <li>
+      <%= link_to "#{word.name}", word %>
+    </li>
+  <% end %>
+</ul>
