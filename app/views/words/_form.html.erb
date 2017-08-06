@@ -1,0 +1,13 @@
+<div class="word-form">
+  <%= form_for @word do |f| %>
+  <%# render "shared/errors", object: @word %>
+  <div class="form-field">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: "required" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Save word" %>
+  </div>
+  <% end %>
+</div>
