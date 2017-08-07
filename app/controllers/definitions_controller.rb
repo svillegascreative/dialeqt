@@ -1,5 +1,5 @@
 class DefinitionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :find_word
 
   def new
     @definition = Definition.new
@@ -7,14 +7,13 @@ class DefinitionsController < ApplicationController
 
   def create
     @definition = Definition.new(definition_params)
-    find_word
-    @definition.word_id = @word.id
     @definition.user_id = current_user.id
+    @definition.word = @word
 
     if @definition.save
       redirect_to @word
     else
-      render :new
+      redirect_to words_path
     end
   end
 
@@ -26,9 +25,9 @@ class DefinitionsController < ApplicationController
     find_definition
 
     if @definition.update_attributes(definition_params)
-      redirect_to @definition
+      redirect_to @word
     else
-      render :edit
+      redirect_to words_path
     end
   end
 
@@ -45,10 +44,10 @@ private
   end
 
   def find_word
-    @word = Word.find[:id]
+    @word = Word.find(params[:word_id])
   end
 
   def definition_params
-    require(:deifnition).permit(:details, :example, :user_id, :word_id)
+    params.require(:definition).permit(:details, :example, :user_id, :word_id)
   end
 end
