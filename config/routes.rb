@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions'}
 
-  resources :words
-  resources :definitions, except: [:index, :show]
-
+  resources :words do
+    resources :definitions, except: [:index, :show]
+  end
 end
