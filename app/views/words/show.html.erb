@@ -1,1 +1,10 @@
 <h1><%= @word.name %></h1>
+
+<% if @definitions %>
+    <%= render @definitions %>
+<% end %>
+
+<% if current_user %>
+  <h3>Add a Definition</h3>
+  <%= render partial: "definitions/form", word: @word %>
+<% end %>

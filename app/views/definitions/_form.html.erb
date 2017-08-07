@@ -1,0 +1,17 @@
+<%= form_for [@word, @new_definition] do |f| %>
+  <%# render "shared/errors", object: @new_definition %>
+  <div class="form-field">
+    <%= f.label :details %>
+    <%= f.text_field :details %>
+  </div>
+
+  <div class="form-field">
+    <%= f.label :example %>
+    <%= f.text_field :example %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Save" %>
+  </div>
+
+<% end %>

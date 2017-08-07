@@ -7,6 +7,8 @@ class WordsController < ApplicationController
 
   def show
     find_word
+    @definitions = @word.definitions
+    @new_definition = Definition.new
   end
 
   def new
