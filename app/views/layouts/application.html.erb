@@ -8,6 +8,10 @@
   </head>
 
   <body>
+    <header>
+      <%= render "shared/navigation" %>
+    </header>
+
     <% flash.each do |key, message| %>
       <div class="flash flash-<%= key %>">
         <%= message %>
@@ -15,5 +19,6 @@
     <% end %>
 
     <%= yield %>
+
   </body>
 </html>
