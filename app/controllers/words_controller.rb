@@ -15,6 +15,7 @@ class WordsController < ApplicationController
 
   def create
     @word = Word.new(word_params)
+    @word.user_id = current_user.id
 
     if @word.save
       redirect_to @word
