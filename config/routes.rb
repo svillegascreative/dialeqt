@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions'}
 
   resources :words do
+     member do
+      put "like", to: "words#like"
+      put "dislike", to: "words#dislike"
+     end
     resources :definitions, only: [:new, :create]
   end
 

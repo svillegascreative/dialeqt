@@ -1,4 +1,8 @@
 <h1><%= @word.name %></h1>
+<div class="word-votes">
+  <%= link_to "like", like_word_path(@word) %> (<%= @word.get_likes.size %>)
+  <%= link_to "dislike", dislike_word_path(@word) %> (<%= @word.get_dislikes.size %>)
+</div>
 
 <% if @definitions %>
     <%= render @definitions %>

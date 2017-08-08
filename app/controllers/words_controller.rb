@@ -46,6 +46,18 @@ class WordsController < ApplicationController
     redirect_to root_url
   end
 
+  def like
+    find_word
+    @word.liked_by current_user
+    redirect_to @word
+  end
+
+  def dislike
+    find_word
+    @word.disliked_by current_user
+    redirect_to @word
+  end
+
 private
 
   def find_word
