@@ -54,7 +54,7 @@ class DefinitionsController < ApplicationController
 private
 
   def find_definition
-    @definition = Definition.find[:id]
+    @definition = Definition.find(params[:id])
   end
 
   def find_word
