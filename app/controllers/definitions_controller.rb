@@ -1,11 +1,13 @@
 class DefinitionsController < ApplicationController
-  before_action :authenticate_user!, :find_word
+  before_action :authenticate_user!
 
   def new
+    find_word
     @definition = Definition.new
   end
 
   def create
+    find_word
     @definition = Definition.new(definition_params)
     @definition.user_id = current_user.id
     @definition.word = @word
