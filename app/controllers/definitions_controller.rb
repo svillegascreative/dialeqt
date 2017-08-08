@@ -37,6 +37,18 @@ class DefinitionsController < ApplicationController
     redirect_to @word
   end
 
+  def upvote
+    find_definition
+    @definition.upvote_by current_user
+    redirect_to @definition.word
+  end
+
+  def downvote
+    find_definition
+    @definition.downvote_by current_user
+    redirect_to @definition.word
+  end
+
 private
 
   def find_definition

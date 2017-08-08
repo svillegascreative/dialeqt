@@ -1,3 +1,7 @@
 <h3>Definition</h3>
+<div class="definition-votes">
+  <%= link_to "vote up", upvote_definition_path(definition), method: :put %> (<%= definition.get_upvotes.size %>)
+  <%= link_to "vote down", downvote_definition_path(definition), method: :put %> (<%= definition.get_downvotes.size %>)
+</div>
 <p><%= definition.details %></p>
 <p><%= definition.example %></p>

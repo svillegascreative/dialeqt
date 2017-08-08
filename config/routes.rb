@@ -12,5 +12,10 @@ Rails.application.routes.draw do
     resources :definitions, only: [:new, :create]
   end
 
-  resources :definitions, only: [:edit, :update, :destroy]
+  resources :definitions, only: [:edit, :update, :destroy] do
+     member do
+      put "upvote", to: "definitions#upvote"
+      put "downvote", to: "definitions#downvote"
+     end
+  end
 end
