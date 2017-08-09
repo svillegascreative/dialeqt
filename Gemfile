@@ -33,8 +33,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
+# voting
 gem 'acts_as_votable', '~> 0.10.0'
+# ranking score (implementation here dependent on acts_as_votable)
 gem 'wilson_score'
+
+# string modification (for pretty urls)
+gem "stringex"
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
