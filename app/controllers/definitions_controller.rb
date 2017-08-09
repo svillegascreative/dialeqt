@@ -51,7 +51,7 @@ class DefinitionsController < ApplicationController
 
   def downvote
     find_definition
-    if current_user.voted_down_on @definition
+    if current_user.voted_down_on? @definition
       @definition.undisliked_by current_user
     else
       @definition.downvote_by current_user
