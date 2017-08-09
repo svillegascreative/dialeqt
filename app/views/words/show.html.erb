@@ -5,7 +5,7 @@
 </div>
 
 <% if @definitions %>
-    <%= render @definitions %>
+    <%= render @definitions.sort_by_wilson_score %>
 <% end %>
 
 <% if current_user %>

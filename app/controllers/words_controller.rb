@@ -2,7 +2,7 @@ class WordsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @words = Word.all.order(created_at: :desc)
+    @words = Word.all.sort_by_wilson_score
   end
 
   def show
