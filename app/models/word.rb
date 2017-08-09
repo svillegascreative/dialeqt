@@ -9,6 +9,10 @@ class Word < ApplicationRecord
     blacklist: %W{new edit},
     blacklist_policy: :blacklist_policy
 
+  def self.find(input)
+    find_by_slug(input)
+  end
+
   def blacklist_policy
     Proc.new {|w| "word-#{w}"}
   end
