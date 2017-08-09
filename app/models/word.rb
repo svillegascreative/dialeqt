@@ -13,6 +13,10 @@ class Word < ApplicationRecord
     find_by_slug(input)
   end
 
+  def to_param
+    slug
+  end
+
   def blacklist_policy
     Proc.new {|w| "word-#{w}"}
   end
