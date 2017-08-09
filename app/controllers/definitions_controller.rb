@@ -41,13 +41,21 @@ class DefinitionsController < ApplicationController
 
   def upvote
     find_definition
-    @definition.upvote_by current_user
+    if current_user.voted_up_on? @definition
+      @definition.unliked_by current_user
+    else
+      @definition.upvote_by current_user
+    end
     redirect_to @definition.word
   end
 
   def downvote
     find_definition
-    @definition.downvote_by current_user
+    if current_user.voted_down_on @definition
+      @definition.undisliked_by current_user
+    else
+      @definition.downvote_by current_user
+    end
     redirect_to @definition.word
   end
 

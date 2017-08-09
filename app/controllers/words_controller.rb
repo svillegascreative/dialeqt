@@ -48,13 +48,21 @@ class WordsController < ApplicationController
 
   def like
     find_word
-    @word.liked_by current_user
+    if current_user.voted_up_on? @word
+      @word.unliked_by current_user
+    else
+      @word.liked_by current_user
+    end
     redirect_to @word
   end
 
   def dislike
     find_word
-    @word.disliked_by current_user
+    if current_user.voted_down_on? @word
+      @word.undisliked_by current_user
+    else
+      @word.disliked_by current_user
+    end
     redirect_to @word
   end
 
