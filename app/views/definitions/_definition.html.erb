@@ -1,7 +1,13 @@
 <h3>Definition</h3>
-<div class="definition-votes">
+
+<p class="def-details"><%= definition.details %></p>
+<p class="def-example"><%= definition.example %></p>
+
+<div class="def-author">
+  Submitted by: <%= definition.user.username %>
+</div>
+
+<div class="def-votes">
   <%= link_to "vote up", upvote_definition_path(definition), method: :put %> (<%= definition.get_upvotes.size %>)
   <%= link_to "vote down", downvote_definition_path(definition), method: :put %> (<%= definition.get_downvotes.size %>)
 </div>
-<p><%= definition.details %></p>
-<p><%= definition.example %></p>
