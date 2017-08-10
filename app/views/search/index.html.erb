@@ -1,9 +1,14 @@
 <h1>Search results for "<%= @query %>"</h1>
 
-<ul class="search-results">
-  <% @words.each do |word| %>
-    <li>
-      <%= link_to word.name, word %>
-    </li>
-  <% end %>
-</ul>
+<h3>Words</h3>
+<% if @words.blank? %>
+  <p>There are no words that match your search.</p>
+<% else %>
+  <ul class="search-results">
+    <% @words.each do |word| %>
+      <li>
+        <%= link_to word.name, word %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
