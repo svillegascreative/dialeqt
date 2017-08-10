@@ -1,11 +1,11 @@
 <h1><%= @word.name %></h1>
 <div class="word-votes">
-  <%= link_to "like", like_word_path(@word), method: :put %> (<%= @word.get_likes.size %>)
-  <%= link_to "dislike", dislike_word_path(@word), method: :put %> (<%= @word.get_dislikes.size %>)
+  <%= link_to "like", like_word_path(@word), method: :put %> (<%= @word.cached_votes_up %>)
+  <%= link_to "dislike", dislike_word_path(@word), method: :put %> (<%= @word.cached_votes_down %>)
 </div>
 
 <% if @definitions %>
-    <%= render @definitions.sort_by_wilson_score %>
+    <%= render @definitions.order(wilson_score: :desc) %>
 <% end %>
 
 <% if current_user %>

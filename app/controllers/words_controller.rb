@@ -2,7 +2,7 @@ class WordsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @words = Word.all.sort_by_wilson_score
+    @words = Word.all.order(wilson_score: :desc)
   end
 
   def show
@@ -53,6 +53,7 @@ class WordsController < ApplicationController
     else
       @word.liked_by current_user
     end
+    @word.get_wilson_score
     redirect_to @word
   end
 
