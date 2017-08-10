@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809201206) do
+ActiveRecord::Schema.define(version: 20170810013428) do
 
   create_table "definitions", force: :cascade do |t|
     t.string   "details"
@@ -55,10 +55,18 @@ ActiveRecord::Schema.define(version: 20170809201206) do
 
   create_table "words", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
     t.string   "slug"
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_score", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
+    t.index ["cached_votes_down"], name: "index_words_on_cached_votes_down"
+    t.index ["cached_votes_score"], name: "index_words_on_cached_votes_score"
+    t.index ["cached_votes_total"], name: "index_words_on_cached_votes_total"
+    t.index ["cached_votes_up"], name: "index_words_on_cached_votes_up"
     t.index ["slug"], name: "index_words_on_slug", unique: true
   end
 
