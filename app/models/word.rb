@@ -13,6 +13,13 @@ class Word < ApplicationRecord
     find_by_slug(input)
   end
 
+  def self.search(query, columns)
+    where(
+      columns.map{|c| "#{c} ilike :search" }.join(' OR '),
+      search: "%#{query}%"
+    )
+  end
+
   def to_param
     slug
   end
