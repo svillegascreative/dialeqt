@@ -10,15 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810013428) do
+ActiveRecord::Schema.define(version: 20170810020540) do
 
   create_table "definitions", force: :cascade do |t|
     t.string   "details"
     t.string   "example"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "word_id"
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_score", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
+    t.decimal  "wilson_score"
+    t.index ["cached_votes_down"], name: "index_definitions_on_cached_votes_down"
+    t.index ["cached_votes_score"], name: "index_definitions_on_cached_votes_score"
+    t.index ["cached_votes_total"], name: "index_definitions_on_cached_votes_total"
+    t.index ["cached_votes_up"], name: "index_definitions_on_cached_votes_up"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,6 +72,7 @@ ActiveRecord::Schema.define(version: 20170810013428) do
     t.integer  "cached_votes_score", default: 0
     t.integer  "cached_votes_up",    default: 0
     t.integer  "cached_votes_down",  default: 0
+    t.decimal  "wilson_score"
     t.index ["cached_votes_down"], name: "index_words_on_cached_votes_down"
     t.index ["cached_votes_score"], name: "index_words_on_cached_votes_score"
     t.index ["cached_votes_total"], name: "index_words_on_cached_votes_total"
