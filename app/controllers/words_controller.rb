@@ -12,7 +12,19 @@ class WordsController < ApplicationController
   end
 
   def new
-    @word = Word.new
+    # @word = Word.new
+    # session[:word] ||= params[:word]
+  end
+
+  def check
+    if params[:name].blank?
+      flash.now[:alert] = "You did not provide any word!"
+      render :new
+    else
+      @checked_words = Word.search(params[:name], [:name])
+      @word_name = (params[:name])
+      @word = Word.new
+    end
   end
 
   def create
