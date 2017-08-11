@@ -1,13 +1,13 @@
 class DefinitionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_word, only: [:new, :create]
+  before_action :find_definition, except: [:new, :create]
 
   def new
-    find_word
     @definition = Definition.new
   end
 
   def create
-    find_word
     @definition = Definition.new(definition_params)
     @definition.user_id = current_user.id
     @definition.word = @word
@@ -20,12 +20,9 @@ class DefinitionsController < ApplicationController
   end
 
   def edit
-    find_definition
   end
 
   def update
-    find_definition
-
     if @definition.update_attributes(definition_params)
       redirect_to @word
     else
@@ -34,13 +31,11 @@ class DefinitionsController < ApplicationController
   end
 
   def destroy
-    find_definition
     @definition.destroy
     redirect_to @word
   end
 
   def upvote
-    find_definition
     if current_user.voted_up_on? @definition
       @definition.unliked_by current_user
     else
@@ -50,7 +45,6 @@ class DefinitionsController < ApplicationController
   end
 
   def downvote
-    find_definition
     if current_user.voted_down_on? @definition
       @definition.undisliked_by current_user
     else
