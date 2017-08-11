@@ -7,7 +7,7 @@ class WordsController < ApplicationController
 
   def show
     find_word
-    @definitions = @word.definitions
+    @definitions = @word.definitions.order(wilson_score: :desc)
     @new_definition = Definition.new
   end
 
