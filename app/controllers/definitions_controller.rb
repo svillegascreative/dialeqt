@@ -32,6 +32,7 @@ class DefinitionsController < ApplicationController
 
   def destroy
     @definition.destroy
+    @word = @definition.word
     redirect_to @word
   end
 
