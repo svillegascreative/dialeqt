@@ -1,2 +1,10 @@
 <h1>Add a Word</h1>
-<%= render "form" %>
+
+<%= form_tag check_words_path, method: :get do %>
+  <%= text_field_tag(
+      :name,
+      params[:name]
+  ) %>
+
+  <%= submit_tag "Submit word", name: nil %>
+<% end %>
