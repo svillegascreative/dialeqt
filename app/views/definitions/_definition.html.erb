@@ -5,6 +5,7 @@
 
 <div class="def-author">
   Submitted by: <%= definition.user.username %>
+  <%= link_to "Edit", edit_definition_path(definition) if current_user == definition.user %>
 </div>
 
 <div class="def-votes">
