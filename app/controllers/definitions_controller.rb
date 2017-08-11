@@ -9,7 +9,6 @@ class DefinitionsController < ApplicationController
 
   def create
     @definition = current_user.definitions.build(definition_params)
-    # @definition.user_id = current_user.id
     @definition.word = @word
 
     if @definition.save
