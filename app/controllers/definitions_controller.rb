@@ -4,11 +4,12 @@ class DefinitionsController < ApplicationController
   before_action :find_definition, except: [:new, :create]
 
   def new
-    @definition = current_user.definitions.build
+    @definition = Definition.new
   end
 
   def create
-    @definition = current_user.definitions.build(definition_params)
+    @definition = Definition.new(definition_params)
+    @definition.user_id = current_user.id
     @definition.word = @word
 
     if @definition.save
