@@ -7,6 +7,7 @@ class SearchController < ApplicationController
     else
       @query = params[:query]
       @words = Word.search(@query, [:name])
+      @definitions = Definition.search(@query, [:details, :example])
     end
   end
 
