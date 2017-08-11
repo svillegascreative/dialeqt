@@ -12,3 +12,18 @@
     <% end %>
   </ul>
 <% end %>
+
+<h3>Definitions</h3>
+<% if @definitions.blank? %>
+  <p>There are no definitions that match your search.</p>
+<% else %>
+  <ul class="search-results">
+    <% @definitions.each do |definition| %>
+      <li>
+        <%= link_to definition.word.name, definition.word %>
+        <p><%= definition.details %></p>
+        <p><%= definition.example %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
