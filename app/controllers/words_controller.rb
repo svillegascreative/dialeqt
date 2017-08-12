@@ -1,12 +1,12 @@
 class WordsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_word, except: [:index, :new, :check, :create]
 
   def index
     @words = Word.all.order(wilson_score: :desc)
   end
 
   def show
-    find_word
     @definitions = @word.definitions.order(wilson_score: :desc)
     @new_definition = Definition.new
   end
@@ -39,12 +39,9 @@ class WordsController < ApplicationController
   end
 
   def edit
-    find_word
   end
 
   def update
-    find_word
-
     if @word.update_attributes(word_params)
       redirect_to @word
     else
@@ -53,13 +50,11 @@ class WordsController < ApplicationController
   end
 
   def destroy
-    find_word
     @word.destroy
     redirect_to root_url
   end
 
   def like
-    find_word
     if current_user.voted_up_on? @word
       @word.unliked_by current_user
     else
@@ -70,7 +65,6 @@ class WordsController < ApplicationController
   end
 
   def dislike
-    find_word
     if current_user.voted_down_on? @word
       @word.undisliked_by current_user
     else
