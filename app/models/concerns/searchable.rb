@@ -3,7 +3,7 @@ module Searchable
 
   module ClassMethods
 
-    def self.search(query, columns)
+    def search(query, columns)
       self.where(
         columns.map{|c| "#{c} ilike :search" }.join(' OR '),
         search: "%#{query}%"
