@@ -19,7 +19,7 @@ class WordsController < ApplicationController
       flash.now[:alert] = "You did not provide any word!"
       render :new
     else
-      @checked_words = Word.search(params[:name], [:name])
+      @checked_words = Word.fuzzy_search(params[:name])
       @word_name = (params[:name])
       @word = Word.new
     end
