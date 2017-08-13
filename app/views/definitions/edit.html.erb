@@ -1,3 +1,6 @@
 <h1>Edit definition for "<%= @definition.word.name %>"</h1>
 
-<%= render 'form' %>
+<%= form_for @definition do |f| %>
+  <%# render "shared/errors", object: @definition %>
+  <%= render "form", f: f %>
+<% end %>
