@@ -6,8 +6,8 @@ class SearchController < ApplicationController
       redirect_to root_url
     else
       @query = params[:query]
-      @words = Word.search(@query, [:name])
-      @definitions = Definition.search(@query, [:details, :example])
+      @words = Word.fuzzy_search(@query)
+      @definitions = Definition.fuzzy_search(@query)
     end
   end
 
