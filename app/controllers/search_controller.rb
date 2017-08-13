@@ -7,7 +7,7 @@ class SearchController < ApplicationController
     else
       @query = params[:query]
       @words = Word.fuzzy_search(@query)
-      @definitions = Definition.fuzzy_search(@query)
+      @definitions = Definition.search(@query, [:details, :example])
     end
   end
 
