@@ -20,9 +20,11 @@ class DefinitionsController < ApplicationController
   end
 
   def edit
+    @word = @definition.word
   end
 
   def update
+    @word = @definition.word
     if @definition.update_attributes(definition_params)
       redirect_to @word
     else
