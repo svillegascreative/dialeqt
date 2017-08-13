@@ -29,4 +29,8 @@ class Word < ApplicationRecord
   def blacklist_policy
     Proc.new {|w| "word-#{w}"}
   end
+
+  def has_votes?
+    true if cached_votes_total > 0
+  end
 end
