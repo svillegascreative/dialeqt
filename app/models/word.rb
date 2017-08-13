@@ -1,6 +1,7 @@
 class Word < ApplicationRecord
   # include Searchable
   has_many :definitions
+  belongs_to :user
 
   acts_as_votable
 
