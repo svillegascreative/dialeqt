@@ -13,4 +13,16 @@ class Definition < ApplicationRecord
       search: "%#{query}%"
     )
   end
+
+  def has_votes?
+    true if cached_votes_total > 0
+  end
+
+  def cannot_be_edited?
+    true if has_votes?
+  end
+
+  def cannot_be_destroyed?
+    true if has_votes?
+  end
 end
