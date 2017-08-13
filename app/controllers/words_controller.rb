@@ -12,8 +12,6 @@ class WordsController < ApplicationController
   end
 
   def new
-    # @word = Word.new
-    # session[:word] ||= params[:word]
   end
 
   def check
