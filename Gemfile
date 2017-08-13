@@ -42,6 +42,9 @@ gem 'wilson_score'
 # string modification (for pretty urls)
 gem "stringex"
 
+# advanced & fuzzy searching for pgSQL
+gem 'textacular', '~> 5.0'
+
 
 
 # Use Capistrano for deployment
