@@ -3,6 +3,8 @@ class Word < ApplicationRecord
   has_many :definitions, dependent: :restrict_with_error
   belongs_to :user
 
+  validates_uniqueness_of :name
+
   acts_as_votable
 
   acts_as_url :name,
