@@ -21,6 +21,10 @@ class DefinitionsController < ApplicationController
 
   def edit
     @word = @definition.word
+    if @definition.cannot_be_edited?
+      flash[:alert] = "You cannot edit a definition that has been voted on."
+      redirect_to @word
+    end
   end
 
   def update
@@ -33,8 +37,12 @@ class DefinitionsController < ApplicationController
   end
 
   def destroy
-    @definition.destroy
     @word = @definition.word
+    if @definition.cannot_be_destroyed?
+      flash[:alert] = "You cannot delete a definition that has been voted on."
+    else
+      @definition.destroy
+    end
     redirect_to @word
   end
 
