@@ -1,6 +1,6 @@
 class Word < ApplicationRecord
   # include Searchable
-  has_many :definitions
+  has_many :definitions, dependent: :restrict_with_error
   belongs_to :user
 
   acts_as_votable

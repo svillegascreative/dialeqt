@@ -52,8 +52,13 @@ class WordsController < ApplicationController
   end
 
   def destroy
-    @word.destroy
-    redirect_to root_url
+    if @word.cannot_be_destroyed?
+      flash[:alert] = "You cannot delete a word that has votes or definitions."
+      redirect_to @word
+    else
+      @word.destroy
+      redirect_to root_url
+    end
   end
 
   def like
