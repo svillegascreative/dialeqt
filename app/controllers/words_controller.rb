@@ -7,6 +7,7 @@ class WordsController < ApplicationController
   end
 
   def show
+    @related_words = Word.fuzzy_search(@word.name).where.not(name: @word.name)
     @definitions = @word.definitions.order(wilson_score: :desc)
     @new_definition = Definition.new
   end

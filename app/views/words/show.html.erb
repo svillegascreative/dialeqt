@@ -4,7 +4,7 @@
   By <%= @word.user.username %>
   on <%= @word.when_created %>
   <% if current_user == @word.user %>
-    <%= link_to "Edit", edit_word_path(@word) %> | 
+    <%= link_to "Edit", edit_word_path(@word) %> |
     <%= link_to "Delete", word_path(@word), method: :delete,
       data: { confirm: "CAUTION: DELETION CANNOT BE UNDONE.\n\nAre you sure you want to delete this word?"}  %>
   <% end %>
@@ -14,6 +14,15 @@
   <%= link_to "like", like_word_path(@word), method: :put %> (<%= @word.cached_votes_up %>)
   <%= link_to "dislike", dislike_word_path(@word), method: :put %> (<%= @word.cached_votes_down %>)
 </div>
+
+<% if !@related_words.blank? %>
+  <div class="related-words">
+    <h3>Related words:</h3>
+    <% @related_words.each do |w| %>
+    <%= link_to w.name, word_path(w) %>
+    <% end %>
+  </div>
+<% end %>
 
 <% if @definitions %>
     <%= render @definitions %>
