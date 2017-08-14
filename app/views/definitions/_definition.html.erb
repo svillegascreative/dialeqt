@@ -6,9 +6,11 @@
 <div class="def-author">
   By <%= definition.user.username %>
   on <%= definition.when_created %>
-  <%= link_to "Edit", edit_definition_path(definition) if current_user == definition.user %> |
-  <%= link_to "Delete", definition_path(definition), method: :delete,
-      data: { confirm: "CAUTION: DELETION CANNOT BE UNDONE.\n\nAre you sure you want to delete this definition?"} %>
+  <% if current_user == definition.user %>
+    <%= link_to "Edit", edit_definition_path(definition) %> |
+    <%= link_to "Delete", definition_path(definition), method: :delete,
+        data: { confirm: "CAUTION: DELETION CANNOT BE UNDONE.\n\nAre you sure you want to delete this definition?"} %>
+  <% end %>
 </div>
 
 <div class="def-votes">
