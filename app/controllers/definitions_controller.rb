@@ -52,6 +52,7 @@ class DefinitionsController < ApplicationController
     else
       @definition.upvote_by current_user
     end
+    @definition.update_wilson_score
     redirect_to @definition.word
   end
 
@@ -61,6 +62,7 @@ class DefinitionsController < ApplicationController
     else
       @definition.downvote_by current_user
     end
+    @definition.update_wilson_score
     redirect_to @definition.word
   end
 

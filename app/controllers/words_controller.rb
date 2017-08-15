@@ -68,7 +68,7 @@ class WordsController < ApplicationController
     else
       @word.liked_by current_user
     end
-    @word.get_wilson_score
+    @word.update_wilson_score
     redirect_to @word
   end
 
@@ -78,6 +78,7 @@ class WordsController < ApplicationController
     else
       @word.disliked_by current_user
     end
+    @word.update_wilson_score
     redirect_to @word
   end
 
