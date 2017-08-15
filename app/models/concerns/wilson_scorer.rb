@@ -25,6 +25,10 @@ module WilsonScorer
         item.update_wilson_score
       end
     end
+
+    def order_by_best_wilson_score
+      order(wilson_score: :desc, cached_votes_up: :asc, cached_votes_down: :asc)
+    end
   end
 
 end

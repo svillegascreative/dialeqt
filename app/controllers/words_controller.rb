@@ -3,12 +3,12 @@ class WordsController < ApplicationController
   before_action :find_word, except: [:index, :new, :check, :create]
 
   def index
-    @words = Word.all.order(wilson_score: :desc)
+    @words = Word.all.order_by_best_wilson_score
   end
 
   def show
     @related_words = Word.fuzzy_search(@word.name).where.not(name: @word.name)
-    @definitions = @word.definitions.order(wilson_score: :desc)
+    @definitions = @word.definitions.order_by_best_wilson_score
     @new_definition = Definition.new
   end
 
