@@ -1,5 +1,7 @@
 class Definition < ApplicationRecord
   # include Searchable
+  include WilsonScorer
+
   belongs_to :word
   belongs_to :user
 
