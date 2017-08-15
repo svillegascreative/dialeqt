@@ -1,5 +1,5 @@
 class Definition < ApplicationRecord
-  # include Searchable
+  include Searchable
   include WilsonScorer
   include NiceDateTimer
 
@@ -9,13 +9,6 @@ class Definition < ApplicationRecord
   validates :details, presence: true
 
   acts_as_votable
-
-  def self.search(query, columns)
-    where(
-      columns.map{|c| "#{c} ilike :search" }.join(' OR '),
-      search: "%#{query}%"
-    )
-  end
 
   def has_votes?
     true if cached_votes_total > 0

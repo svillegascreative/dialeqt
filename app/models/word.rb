@@ -1,5 +1,5 @@
 class Word < ApplicationRecord
-  # include Searchable
+  include Searchable
   include WilsonScorer
   include NiceDateTimer
 
@@ -18,13 +18,6 @@ class Word < ApplicationRecord
 
   def self.find(input)
     find_by_slug(input)
-  end
-
-  def self.search(query, columns)
-    where(
-      columns.map{|c| "#{c} ilike :search" }.join(' OR '),
-      search: "%#{query}%"
-    )
   end
 
   def to_param
