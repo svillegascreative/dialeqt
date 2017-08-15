@@ -1,6 +1,7 @@
 class Word < ApplicationRecord
   # include Searchable
   include WilsonScorer
+  include NiceDateTimer
 
   has_many :definitions, dependent: :restrict_with_error
   belongs_to :user

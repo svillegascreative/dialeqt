@@ -1,17 +1,22 @@
-module GoodTimes
+module NiceDateTimer
   extend ActiveSupport::Concern
   # included do
   # end
 
-  @friendly_date = "%b %-d '%y"
-  @friendly_datetime = "%b %-d '%y %l:%M%p"
+  def nice_date_format
+    "%b %-d '%y"
+  end
+
+  def nice_datetime_format
+    "%b %-d '%y %l:%M%p"
+  end
 
   def when_created
-    self.created_at.strftime(@friendly_date)
+    created_at.strftime(nice_date_format)
   end
 
   def when_updated
-    self.updated_at.strftime(@friendly_date)
+    updated_at.strftime(nice_date_format)
   end
 
   def when_if_updated

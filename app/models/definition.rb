@@ -1,6 +1,7 @@
 class Definition < ApplicationRecord
   # include Searchable
   include WilsonScorer
+  include NiceDateTimer
 
   belongs_to :word
   belongs_to :user
