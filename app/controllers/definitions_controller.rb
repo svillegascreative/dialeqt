@@ -4,13 +4,12 @@ class DefinitionsController < ApplicationController
   before_action :find_definition, except: [:new, :create]
 
   def new
-    @definition = Definition.new
+    @definition = @word.definitions.build()
   end
 
   def create
-    @definition = Definition.new(definition_params)
+    @definition = @word.definitions.build(definition_params)
     @definition.user_id = current_user.id
-    @definition.word = @word
 
     if @definition.save
       redirect_to @word
@@ -20,30 +19,27 @@ class DefinitionsController < ApplicationController
   end
 
   def edit
-    @word = @definition.word
     if @definition.cannot_be_edited?
       flash[:alert] = "You cannot edit a definition that has been voted on."
-      redirect_to @word
+      redirect_to @definition.word
     end
   end
 
   def update
-    @word = @definition.word
     if @definition.update_attributes(definition_params)
-      redirect_to @word
+      redirect_to @definition.word
     else
       redirect_to words_path
     end
   end
 
   def destroy
-    @word = @definition.word
     if @definition.cannot_be_destroyed?
-      flash[:alert] = "You cannot delete a definition that has been voted on."
+      flash.now[:alert] = "You cannot delete a definition that has been voted on."
     else
       @definition.destroy
+      redirect_to @definition.word
     end
-    redirect_to @word
   end
 
   def upvote
