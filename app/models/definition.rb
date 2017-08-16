@@ -1,5 +1,6 @@
 class Definition < ApplicationRecord
   include Searchable
+  include Votable
   include WilsonScorer
   include NiceDateTimer
 
@@ -7,8 +8,6 @@ class Definition < ApplicationRecord
   belongs_to :user
 
   validates :details, presence: true
-
-  acts_as_votable
 
   def has_votes?
     true if cached_votes_total > 0

@@ -1,5 +1,6 @@
 class Word < ApplicationRecord
   include Searchable
+  include Votable
   include WilsonScorer
   include NiceDateTimer
 
@@ -7,8 +8,6 @@ class Word < ApplicationRecord
   belongs_to :user
 
   validates_uniqueness_of :name
-
-  acts_as_votable
 
   acts_as_url :name,
     url_attribute: :slug,
