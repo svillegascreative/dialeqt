@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 
 # voting
-gem 'acts_as_votable', '~> 0.10.0'
+# gem 'acts_as_votable', '~> 0.10.0'
 # ranking score (implementation here dependent on acts_as_votable)
 gem 'wilson_score'
 
