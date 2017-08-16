@@ -5,42 +5,11 @@ module Votable
 
   include VotableHelpers
 
-    # allow the user to define these himself
-    aliases = {
-
-      :vote_up => [
-        :up_by, :upvote_by, :like_by, :liked_by,
-        :up_from, :upvote_from, :upvote_by, :like_from, :liked_from, :vote_from
-      ],
-
-      :vote_down => [
-        :down_by, :downvote_by, :dislike_by, :disliked_by,
-        :down_from, :downvote_from, :downvote_by, :dislike_by, :disliked_by
-      ],
-
-      :get_up_votes => [
-        :get_true_votes, :get_ups, :get_upvotes, :get_likes, :get_positives, :get_for_votes,
-      ],
-
-      :get_down_votes => [
-        :get_false_votes, :get_downs, :get_downvotes, :get_dislikes, :get_negatives
-      ],
-      :unvote_by => [
-        :unvote_up, :unvote_down, :unliked_by, :undisliked_by
-      ]
-    }
-
     included do
     # base.class_eval do
       has_many :votes_for, :class_name => 'Vote', :as => :votable, :dependent => :destroy do
         def voters
           includes(:voter).map(&:voter)
-        end
-      end
-
-      aliases.each do |method, links|
-        links.each do |new_method|
-          alias_method(new_method, method)
         end
       end
 
