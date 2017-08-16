@@ -1,23 +1,17 @@
-require 'votable/votable_helpers'
-
 module Votable
   extend ActiveSupport::Concern
 
-  include VotableHelpers
-
-    included do
-    # base.class_eval do
-      has_many :votes_for, :class_name => 'Vote', :as => :votable, :dependent => :destroy do
-        def voters
-          includes(:voter).map(&:voter)
-        end
+  included do
+    has_many :votes_for, :class_name => 'Vote', :as => :votable, :dependent => :destroy do
+      def voters
+        includes(:voter).map(&:voter)
       end
-
     end
-  # end
+  end
 
 
   attr_accessor :vote_registered
+
 
   def vote_registered?
     return self.vote_registered
@@ -53,7 +47,7 @@ module Votable
 
     if votes.count == 0 or options[:duplicate]
       # this voter has never voted
-      vote = ActsAsVotable::Vote.new(
+      vote = Vote.new(
         :votable => self,
         :voter => options[:voter],
         :vote_scope => options[:vote_scope]
@@ -65,7 +59,7 @@ module Votable
 
     last_update = vote.updated_at
 
-    vote.vote_flag = votable_words.meaning_of(options[:vote])
+    vote.vote_flag = options[:vote]
 
     #Allowing for a vote_weight to be associated with every vote. Could change with every voter object
     vote.vote_weight = (options[:vote_weight].to_i if options[:vote_weight].present?) || 1
