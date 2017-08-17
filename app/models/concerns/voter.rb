@@ -1,20 +1,13 @@
 module Voter
   extend ActiveSupport::Concern
 
-    # def self.included(base)
-
-      # base.class_eval do
-        included do
-
-        has_many :votes, :class_name => 'ActsAsVotable::Vote', :as => :voter, :dependent => :destroy do
-          def votables
-            includes(:votable).map(&:votable)
-          end
+    included do
+      has_many :votes, :class_name => 'Vote', :as => :voter, :dependent => :destroy do
+        def votables
+          includes(:votable).map(&:votable)
         end
-
       end
-
-    # end
+    end
 
     # voting
     def vote args
@@ -85,7 +78,7 @@ module Voter
 
     # Including polymporphic relations for eager loading
     def include_objects
-      ActsAsVotable::Vote.includes(:votable)
+      Vote.includes(:votable)
     end
 
     def find_voted_items extra_conditions = {}
