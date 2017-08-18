@@ -44,9 +44,9 @@ class DefinitionsController < ApplicationController
 
   def upvote
     if current_user.voted_up_on? @definition
-      @definition.unliked_by current_user
+      @definition.unvote_by current_user
     else
-      @definition.upvote_by current_user
+      @definition.vote_up current_user
     end
     @definition.update_wilson_score
     redirect_to @definition.word
@@ -54,9 +54,9 @@ class DefinitionsController < ApplicationController
 
   def downvote
     if current_user.voted_down_on? @definition
-      @definition.undisliked_by current_user
+      @definition.unvote_by current_user
     else
-      @definition.downvote_by current_user
+      @definition.vote_down current_user
     end
     @definition.update_wilson_score
     redirect_to @definition.word

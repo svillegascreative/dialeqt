@@ -15,7 +15,7 @@
 
 <div class="def-votes">
   <%= link_to "vote up", upvote_definition_path(definition), method: :put %>
-  (<%= definition.get_upvotes.size %>)
+  (<%= definition.get_up_votes.size %>)
   <%= link_to "vote down", downvote_definition_path(definition), method: :put %>
-  (<%= definition.get_downvotes.size %>)
+  (<%= definition.get_down_votes.size %>)
 </div>
