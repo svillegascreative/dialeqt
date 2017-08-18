@@ -17,7 +17,7 @@ module Votable
     {
       votable_id: self.id,
       votable_type: self.class.base_class.name.to_s,
-      vote: true,
+      vote_flag: true,
       vote_scope: nil
     }
   end
@@ -45,11 +45,11 @@ module Votable
     # find the vote
     votes = votes_for.where({
       :voter_id => options[:voter].id,
-      :vote_scope => options[:vote_scope],
-      :voter_type => options[:voter].class.base_class.name
+      :voter_type => options[:voter].class.base_class.name,
+      :vote_scope => options[:vote_scope]
     })
 
-    if votes.count == 0 or options[:duplicate]
+    if votes.count == 0
       # this voter has never voted
       vote = Vote.new(
         :votable => self,
@@ -63,7 +63,7 @@ module Votable
 
     last_update = vote.updated_at
 
-    vote.vote_flag = options[:vote]
+    vote.vote_flag = options[:vote_flag]
 
     #Allowing for a vote_weight to be associated with every vote. Could change with every voter object
     vote.vote_weight = (options[:vote_weight].to_i if options[:vote_weight].present?) || 1
@@ -91,15 +91,15 @@ module Votable
   end
 
   def vote_up voter, options={}
-    self.vote :voter => voter, :vote => true, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
+    self.vote :voter => voter, :vote_flag => true, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
   end
 
   def vote_down voter, options={}
-    self.vote :voter => voter, :vote => false, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
+    self.vote :voter => voter, :vote_flag => false, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
   end
 
   def vote_by voter, options={}
-    self.vote :voter => voter, :vote => true, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
+    self.vote :voter => voter, :vote_flag => true, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
   end
 
   def unvote_by  voter, options = {}
