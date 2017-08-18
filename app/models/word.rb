@@ -5,6 +5,8 @@ class Word < ApplicationRecord
   include NiceDateTimer
 
   has_many :definitions, dependent: :restrict_with_error
+  has_many :taggings
+  has_many :tags, through: :taggings
   belongs_to :user
 
   validates_uniqueness_of :name
