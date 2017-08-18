@@ -43,7 +43,7 @@ module Votable
     end
 
     # find the vote
-    votes = find_votes_for({
+    votes = votes_for.where({
       :voter_id => options[:voter].id,
       :vote_scope => options[:vote_scope],
       :voter_type => options[:voter].class.base_class.name
@@ -81,7 +81,7 @@ module Votable
 
   def unvote args = {}
     return false if args[:voter].nil?
-    votes = find_votes_for(:voter_id => args[:voter].id, :vote_scope => args[:vote_scope], :voter_type => args[:voter].class.base_class.name)
+    votes = votes_for.where(:voter_id => args[:voter].id, :vote_scope => args[:vote_scope], :voter_type => args[:voter].class.base_class.name)
 
     return true if votes.size == 0
     votes.each(&:destroy)
@@ -220,18 +220,14 @@ module Votable
 
 
   # results
-  def find_votes_for extra_conditions = {}
-    votes_for.where(extra_conditions)
-  end
-
   def get_up_votes options={}
     vote_scope_hash = scope_or_empty_hash(options[:vote_scope])
-    find_votes_for({:vote_flag => true}.merge(vote_scope_hash))
+    votes_for.where({:vote_flag => true}.merge(vote_scope_hash))
   end
 
   def get_down_votes options={}
     vote_scope_hash = scope_or_empty_hash(options[:vote_scope])
-    find_votes_for({:vote_flag => false}.merge(vote_scope_hash))
+    votes_for.where({:vote_flag => false}.merge(vote_scope_hash))
   end
 
 
@@ -240,7 +236,7 @@ module Votable
     if !skip_cache && self.respond_to?(scope_cache_field :cached_votes_total, vote_scope)
       return self.send(scope_cache_field :cached_votes_total, vote_scope)
     end
-    find_votes_for(scope_or_empty_hash(vote_scope)).count
+    votes_for.where(scope_or_empty_hash(vote_scope)).count
   end
 
   def count_votes_up skip_cache = false, vote_scope = nil
@@ -299,7 +295,7 @@ module Votable
 
   # voters
   def voted_on_by? voter
-    votes = find_votes_for :voter_id => voter.id, :voter_type => voter.class.base_class.name
+    votes = votes_for.where(:voter_id => voter.id, :voter_type => voter.class.base_class.name)
     votes.count > 0
   end
 
