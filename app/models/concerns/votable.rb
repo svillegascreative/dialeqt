@@ -25,7 +25,7 @@ module Votable
   end
 
   # voting
-  def vote_by args = {}
+  def vote args = {}
 
     options = {
       :vote => true,
@@ -87,11 +87,15 @@ module Votable
   end
 
   def vote_up voter, options={}
-    self.vote_by :voter => voter, :vote => true, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
+    self.vote :voter => voter, :vote => true, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
   end
 
   def vote_down voter, options={}
-    self.vote_by :voter => voter, :vote => false, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
+    self.vote :voter => voter, :vote => false, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
+  end
+
+  def vote_by voter, options={}
+    self.vote :voter => voter, :vote => true, :vote_scope => options[:vote_scope], :vote_weight => options[:vote_weight]
   end
 
   def unvote_by  voter, options = {}
