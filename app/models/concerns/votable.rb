@@ -13,24 +13,28 @@ module Votable
   attr_accessor :vote_registered
 
 
+  def default_options
+    {
+      votable_id: self.id,
+      votable_type: self.class.base_class.name.to_s,
+      vote: true,
+      vote_scope: nil
+    }
+  end
+
+  def vote_options(args = {})
+    default_options.merge(args)
+  end
+
   def vote_registered?
     return self.vote_registered
   end
 
-  def default_conditions
-    {
-      :votable_id => self.id,
-      :votable_type => self.class.base_class.name.to_s
-    }
-  end
 
   # voting
   def vote args = {}
 
-    options = {
-      :vote => true,
-      :vote_scope => nil
-    }.merge(args)
+    options = vote_options(args)
 
     self.vote_registered = false
 
