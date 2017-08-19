@@ -6,6 +6,8 @@
     <%= f.text_field :name, required: "required" %>
   </div>
 
+  <%= render partial: "tags/fields", locals: {f: f} %>
+
   <div class="form-actions">
     <%= f.submit "Save word" %>
   </div>

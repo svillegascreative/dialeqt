@@ -5,15 +5,7 @@
   <p>Check! "<%= @word_name %>" doesn't exist yet!</p>
   <%= form_for @word do |f| %>
 
-    <div class="tag-fields">
-      <h3>Add tags:</h3>
-      <%= f.fields_for :tags do |tags_f| %>
-        <div class="form_field">
-          <%= tags_f.text_field :name %>
-          <%= tags_f.check_box :_destroy %>
-        </div>
-      <% end %>
-    </div>
+    <%= render partial: "tags/fields", locals: {f: f} %>
 
     <%= f.hidden_field(:name, value: @word_name) %>
     <%= f.submit "Add it!" %>
@@ -31,6 +23,9 @@
   </ul>
   <p>If you're certain that your word is not a duplicate of any of those listed, you may add it now.</p>
   <%= form_for @word do |f| %>
+
+    <%= render partial: "tags/fields", locals: {f: f} %>
+
     <%= f.hidden_field(:name, value: @word_name) %>
     <%= f.submit "Add it!" %>
   <% end %>
