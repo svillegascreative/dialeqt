@@ -2,7 +2,7 @@
 
 <div class="word-tags">
   <% @word.tags.each do |tag| %>
-  <span><%= tag.name %></span>
+  <span><%= link_to tag.name, tag_path(tag) %></span>
   <% end %>
 </div>
 
