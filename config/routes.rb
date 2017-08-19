@@ -23,4 +23,6 @@ Rails.application.routes.draw do
       put "downvote", to: "definitions#downvote"
      end
   end
+
+  resources :tags, only: [:index, :show]
 end
