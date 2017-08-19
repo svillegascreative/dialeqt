@@ -23,7 +23,7 @@ class WordsController < ApplicationController
       @checked_words = Word.fuzzy_search(params[:name])
       @word_name = (params[:name])
       @word = Word.new
-      3.times do {@word.tags.build}
+      3.times {@word.tags.build}
     end
   end
 
