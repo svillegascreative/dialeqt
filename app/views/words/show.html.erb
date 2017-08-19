@@ -1,5 +1,11 @@
 <h1><%= @word.name %></h1>
 
+<div class="word-tags">
+  <% @word.tags.each do |tag| %>
+  <span><%= tag.name %></span>
+  <% end %>
+</div>
+
 <div class="word-author">
   By <%= @word.user.username %>
   on <%= @word.when_created %>
