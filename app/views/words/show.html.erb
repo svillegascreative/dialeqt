@@ -6,15 +6,7 @@
   <% end %>
 </div>
 
-<div class="word-author">
-  By <%= @word.user.username %>
-  on <%= @word.when_created %>
-  <% if current_user == @word.user %>
-    <%= link_to "Edit", edit_word_path(@word) %> |
-    <%= link_to "Delete", word_path(@word), method: :delete,
-      data: { confirm: "CAUTION: DELETION CANNOT BE UNDONE.\n\nAre you sure you want to delete this word?"}  %>
-  <% end %>
-</div>
+<%= render partial: "shared/author", locals: {item: @word} %>
 
 <div class="word-votes">
   <%= link_to "like", like_word_path(@word), method: :put %> (<%= @word.cached_votes_up %>)
