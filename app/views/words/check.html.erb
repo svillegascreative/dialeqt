@@ -4,6 +4,17 @@
 
   <p>Check! "<%= @word_name %>" doesn't exist yet!</p>
   <%= form_for @word do |f| %>
+
+    <div class="tag-fields">
+      <h3>Add tags:</h3>
+      <%= f.fields_for :tags do |tags_f| %>
+        <div class="form_field">
+          <%= tags_f.text_field :name %>
+          <%= tags_f.check_box :_destroy %>
+        </div>
+      <% end %>
+    </div>
+
     <%= f.hidden_field(:name, value: @word_name) %>
     <%= f.submit "Add it!" %>
   <% end %>

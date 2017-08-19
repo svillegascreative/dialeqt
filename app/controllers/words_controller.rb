@@ -23,6 +23,7 @@ class WordsController < ApplicationController
       @checked_words = Word.fuzzy_search(params[:name])
       @word_name = (params[:name])
       @word = Word.new
+      3.times do {@word.tags.build}
     end
   end
 
@@ -89,7 +90,7 @@ private
   end
 
   def word_params
-    params.require(:word).permit(:name)
+    params.require(:word).permit(:name, tags_attributes: [:name, :_destroy])
   end
 
 end
