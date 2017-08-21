@@ -23,13 +23,14 @@ class WordsController < ApplicationController
       @checked_words = Word.fuzzy_search(params[:name])
       @word_name = (params[:name])
       @word = Word.new
-      3.times {@word.tags.build}
+      @word.tags.build
     end
   end
 
   def create
     @word = Word.new(word_params)
     @word.user_id = current_user.id
+    @word.tags = Tag.find_or_initialize_by(params[:tags_attributes]) if params[:tags_attributes]
 
     if @word.save
       redirect_to @word
