@@ -106,6 +106,23 @@ module Votable
     self.unvote :voter => voter, :vote_scope => options[:vote_scope] #Does not need vote_weight since the votes_for are anyway getting destroyed
   end
 
+  def toggle_upvote(voter)
+    if voter.voted_up_on? self
+      self.unvote_by voter
+    else
+      self.vote_up voter
+    end
+  end
+
+  def toggle_downvote(voter)
+    if voter.voted_down_on? self
+      self.unvote_by voter
+    else
+      self.vote_down voter
+    end
+    #code
+  end
+
   def scope_cache_field field, vote_scope
     return field if vote_scope.nil?
 

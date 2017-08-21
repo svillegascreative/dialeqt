@@ -64,21 +64,13 @@ class WordsController < ApplicationController
   end
 
   def like
-    if current_user.voted_up_on? @word
-      @word.unvote_by current_user
-    else
-      @word.vote_up current_user
-    end
+    @word.toggle_upvote current_user
     @word.update_wilson_score
     redirect_to @word
   end
 
   def dislike
-    if current_user.voted_down_on? @word
-      @word.unvote_by current_user
-    else
-      @word.vote_down current_user
-    end
+    @word.toggle_downvote current_user
     @word.update_wilson_score
     redirect_to @word
   end
