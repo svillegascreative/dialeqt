@@ -7,7 +7,7 @@ class Word < ApplicationRecord
   has_many :definitions, dependent: :restrict_with_error
   has_many :taggings
   has_many :tags, through: :taggings
-  accepts_nested_attributes_for :tags, allow_destroy: true
+  accepts_nested_attributes_for :tags, allow_destroy: true, reject_if: :all_blank
   belongs_to :user
 
   validates_uniqueness_of :name
