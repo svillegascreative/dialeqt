@@ -1,18 +1,8 @@
 <h1>Confirm New Word</h1>
 
 <% if @checked_words.blank? %>
-
   <p>Check! "<%= @word_name %>" doesn't exist yet!</p>
-  <%= form_for @word do |f| %>
-
-    <%= render partial: "tags/fields", locals: {f: f} %>
-
-    <%= f.hidden_field(:name, value: @word_name) %>
-    <%= f.submit "Add it!" %>
-  <% end %>
-
 <% else %>
-
   <p>We found the following words similar to yours. Please do not create duplicate word listings. Instead, consider voting for a word, or adding a definition.</p>
   <ul class="search-results">
     <% @checked_words.each do |word| %>
@@ -22,12 +12,10 @@
     <% end %>
   </ul>
   <p>If you're certain that your word is not a duplicate of any of those listed, you may add it now.</p>
-  <%= form_for @word do |f| %>
+<% end %>
 
-    <%= render partial: "tags/fields", locals: {f: f} %>
-
-    <%= f.hidden_field(:name, value: @word_name) %>
-    <%= f.submit "Add it!" %>
-  <% end %>
-
+<%= form_for @word do |f| %>
+  <%= render partial: "tags/fields", locals: {f: f} %>
+  <%= f.hidden_field(:name, value: @word_name) %>
+  <%= f.submit "Add it!", name: nil %>
 <% end %>
