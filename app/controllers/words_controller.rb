@@ -40,9 +40,12 @@ class WordsController < ApplicationController
   end
 
   def edit
+    @word.tags.build
   end
 
   def update
+    tag_name = params[:word][:tags_attributes]["#{@word.tags.length}"][:name]
+    @word.tags << Tag.find_or_initialize_by(name: tag_name) unless tag_name.blank?
     if @word.update_attributes(word_params)
       redirect_to @word
     else
@@ -79,7 +82,7 @@ private
   end
 
   def word_params
-    params.require(:word).permit(:name, tags_attributes: [:name, :_destroy])
+    params.require(:word).permit(:name, tags_attributes: [:id, :name, :_destroy])
   end
 
 end
