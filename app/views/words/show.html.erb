@@ -2,7 +2,10 @@
 
 <div class="word-tags">
   <% @word.tags.each do |tag| %>
-  <span><%= link_to tag.name, tag_path(tag) %></span>
+    <span><%= link_to tag.name, tag_path(tag) %></span>
+  <% end %>
+  <% if current_user == @word.user %>
+    <%= link_to "Add tag", edit_word_path(@word) %>
   <% end %>
 </div>
 
