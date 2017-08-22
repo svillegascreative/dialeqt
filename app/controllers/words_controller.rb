@@ -40,10 +40,6 @@ class WordsController < ApplicationController
   end
 
   def edit
-    if @word.cannot_be_edited?
-      flash[:alert] = "You cannot edit a word that has votes or definitions."
-      redirect_to @word
-    end
   end
 
   def update
