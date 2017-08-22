@@ -34,15 +34,12 @@ class Word < ApplicationRecord
     true if cached_votes_total > 0
   end
 
+  def has_definitions?
+    true if self.definitions.size > 0
+  end
+
   def has_votes_or_definitions?
-    true if has_votes? || self.definitions
+    true if self.has_votes? || self.has_definitions?
   end
 
-  def cannot_be_edited?
-    true if has_votes_or_definitions?
-  end
-
-  def cannot_be_destroyed?
-    true if has_votes_or_definitions?
-  end
 end
