@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819204620) do
+ActiveRecord::Schema.define(version: 20170823203658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20170819204620) do
     t.index ["cached_votes_score"], name: "index_definitions_on_cached_votes_score", using: :btree
     t.index ["cached_votes_total"], name: "index_definitions_on_cached_votes_total", using: :btree
     t.index ["cached_votes_up"], name: "index_definitions_on_cached_votes_up", using: :btree
+  end
+
+  create_table "flaggings", force: :cascade do |t|
+    t.string   "flaggable_type"
+    t.integer  "flaggable_id"
+    t.string   "flagger_type"
+    t.integer  "flagger_id"
+    t.string   "reason"
+    t.text     "comment"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "pg_search_documents", force: :cascade do |t|

@@ -1,0 +1,2 @@
+class Flagging < ApplicationRecord
+end
