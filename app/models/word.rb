@@ -22,12 +22,12 @@ class Word < ApplicationRecord
     find_by_slug(input)
   end
 
-  def to_param
-    slug
+  def self.random
+    offset(rand(Word.count)).first
   end
 
-  def blacklist_policy
-    Proc.new {|w| "word-#{w}"}
+  def to_param
+    slug
   end
 
   def has_votes?
@@ -40,6 +40,12 @@ class Word < ApplicationRecord
 
   def has_votes_or_definitions?
     true if self.has_votes? || self.has_definitions?
+  end
+
+private
+
+  def blacklist_policy
+    Proc.new {|w| "word-#{w}"}
   end
 
 end
