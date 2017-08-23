@@ -15,6 +15,7 @@
 <% end %>
 
 <%= form_for @word do |f| %>
+  <h3>Add tags:</h3>
   <%= render partial: "tags/fields", locals: {f: f} %>
   <%= f.hidden_field(:name, value: @word_name) %>
   <%= f.submit "Add it!", name: nil %>
