@@ -1,10 +1,12 @@
 <fieldset class="tag-fields">
   <legend>Tags</legend>
-  <%= f.fields_for :tags do |tags_f| %>
+  <%= f.fields_for :tags do |tf| %>
     <div class="form_field">
-      <%= tags_f.text_field :name %>
-      <%= tags_f.check_box :_destroy %>
-      <%= tags_f.label :_destroy, "Remove tag" %>
+      <%= tf.text_field :name %>
+      <% unless tf.object.nil? || tf.object.new_record? %>
+        <%= tf.check_box :_destroy %>
+        <%= tf.label :_destroy, "Remove tag" %>
+      <% end %>
     </div>
   <% end %>
 </fieldset>
