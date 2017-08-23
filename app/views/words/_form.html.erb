@@ -1,6 +1,6 @@
 <div class="word-form">
   <%= form_for @word do |f| %>
-  <%# render "shared/errors", object: @word %>
+  <%= render "shared/errors", object: @word %>
 
     <div class="form-field">
       <%= f.label :name %>

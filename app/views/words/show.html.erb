@@ -32,7 +32,7 @@
 <% if current_user %>
   <h3>Add a Definition</h3>
   <%= form_for [@word, @new_definition] do |f| %>
-    <%# render "shared/errors", object: @new_definition %>
+    <%= render "shared/errors", object: @new_definition %>
     <%= render partial: "definitions/form", locals: {f: f} %>
   <% end %>
 <% end %>
