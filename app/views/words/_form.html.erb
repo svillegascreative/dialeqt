@@ -1,15 +1,21 @@
 <div class="word-form">
   <%= form_for @word do |f| %>
   <%# render "shared/errors", object: @word %>
-  <div class="form-field">
-    <%= f.label :name %>
-    <%= f.text_field :name, required: "required" %>
-  </div>
 
-  <%= render partial: "tags/fields", locals: {f: f} %>
+    <div class="form-field">
+      <%= f.label :name %>
+      <% if @word.has_votes_or_definitions? %>
+        <%= f.text_field :name, disabled: "disabled" %>
+        <span>Note: You cannot edit a word that has votes or definitions.</span>
+      <% else %>
+        <%= f.text_field :name, required: "required" %>
+      <% end %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.submit "Save word" %>
-  </div>
+    <%= render partial: "tags/fields", locals: {f: f} %>
+
+    <div class="form-actions">
+      <%= f.submit "Save word", name: nil %>
+    </div>
   <% end %>
 </div>
