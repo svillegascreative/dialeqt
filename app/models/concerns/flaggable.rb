@@ -11,6 +11,12 @@ module Flaggable
     flaggings.build(flagger_id: user.id, flagger_type: user.class, reason: reason, comment: comment)
   end
 
+  def unflag_by(user)
+    if flagged_by?(user)
+      flags_by(user).last.destroy
+    end
+  end
+
   def flags_by(user)
     flaggings.where(flagger_id: user.id, flagger_type: user.class.to_s)
   end
