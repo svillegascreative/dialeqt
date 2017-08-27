@@ -2,6 +2,7 @@ class Word < ApplicationRecord
   include Searchable
   include Votable
   include WilsonScorer
+  include Flaggable
   include NiceDateTimer
 
   has_many :definitions, dependent: :restrict_with_error
