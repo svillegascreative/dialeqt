@@ -11,8 +11,12 @@ module Flaggable
     flaggings.build(flagger_id: user.id, flagger_type: user.class, reason: reason, comment: comment)
   end
 
+  def flags_by(user)
+    flaggings.where(flagger_id: user.id, flagger_type: user.class.to_s)
+  end
+
   def flagged_by?(user)
-    flaggings.where(flagger_id: user.id, flagger_type: user.class.to_s).length > 0
+    flags_by(user).size > 0
   end
 
   module ClassMethods
