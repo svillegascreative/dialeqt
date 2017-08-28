@@ -1,20 +1,19 @@
 class FlaggingsController < ApplicationController
+
+  def new
+    @flaggable = get_flaggable
+    @flagging = Flagging.new
+  end
+
   def create
-    get_flaggable
     @flagging = current_user.flaggings.build(get_flaggable_params)
+    @flaggable = get_flaggable
     if @flagging.save
       flash[:notice] = "saved"
     else
       flash[:alert] = "failed"
     end
-  end
-
-  def edit
-    #code
-  end
-
-  def update
-    #code
+    redirect_to @flaggable
   end
 
   def destroy
@@ -37,9 +36,9 @@ private
 
   def get_flaggable
     if params[:word_id]
-      @flaggable = Word.find(params[:word_id])
+      Word.find(params[:word_id])
     elsif params[:definition_id]
-      @flaggable = Definition.find(params[:definition_id])
+      Definition.find(params[:definition_id])
     end
   end
 
