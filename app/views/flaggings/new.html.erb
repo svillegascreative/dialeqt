@@ -1,0 +1,23 @@
+<p>Please provide some details:</p>
+<%= form_for [@flaggable, @flagging] do |f| %>
+  <%= render "shared/errors", object: @flagging %>
+  <div class="form-field">
+    <%= f.label :reason %>
+    <div class="radio-option">
+      <%= f.radio_button :reason, "offensive" %><%= f.label "Offensive" %>
+    <div>
+    <div class="radio-option">
+      <%= f.radio_button :reason, "duplicate" %><%= f.label "Duplicate" %>
+    </div>
+    <div class="radio-option">
+      <%= f.radio_button :reason, "off-topic" %><%= f.label "Off-Topic" %>
+    </div>
+  </div>
+  <div class="form-field">
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Flag", name: nil %>
+  </div>
+<% end %>
