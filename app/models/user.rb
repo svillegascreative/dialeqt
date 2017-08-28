@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include Voter
-  
+  has_many :flaggings, as: :flagger
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

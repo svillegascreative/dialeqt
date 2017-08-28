@@ -1,6 +1,7 @@
 class Definition < ApplicationRecord
   include Searchable
   include Votable
+  include Flaggable
   include WilsonScorer
   include NiceDateTimer
 

@@ -1,5 +1,7 @@
 <h1><%= @word.name %></h1>
 
+<%= render partial: "flaggings/flagging", locals: {item: @word} %>
+
 <div class="word-tags">
   <% @word.tags.each do |tag| %>
     <span><%= link_to tag.name, tag_path(tag) %></span>
