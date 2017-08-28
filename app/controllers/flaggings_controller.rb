@@ -6,8 +6,8 @@ class FlaggingsController < ApplicationController
   end
 
   def create
-    @flagging = current_user.flaggings.build(get_flaggable_params)
     @flaggable = get_flaggable
+    @flagging = current_user.flaggings.build(all_params)
     if @flagging.save
       flash[:notice] = "Thank you for calling this #{@flagging.reason} #{@flaggable.class.to_s.downcase} to our attention."
     else
@@ -22,17 +22,16 @@ class FlaggingsController < ApplicationController
 
 private
 
-  # def flagging_params
-  #   params.require(:flagging).permit(
-  #     # :flaggable,
-  #     :flaggable_id,
-  #     :flaggable_type,
-  #     :flagger_id,
-  #     :flagger_type,
-  #     :reason,
-  #     :comment
-  #   )
-  # end
+  def flagging_params
+    params.require(:flagging).permit(
+      :flaggable_id,
+      :flaggable_type,
+      :flagger_id,
+      :flagger_type,
+      :reason,
+      :comment
+    )
+  end
 
   def get_flaggable
     if params[:word_id]
@@ -42,13 +41,15 @@ private
     end
   end
 
-  def get_flaggable_params
+  def flaggable_params
     {
       flaggable_id: @flaggable.id,
-      flaggable_type: @flaggable.class,
-      flagger_id: current_user.id,
-      flagger_type: current_user.class
+      flaggable_type: @flaggable.class
     }
+  end
+
+  def all_params
+    flagging_params.merge(flaggable_params)
   end
 
 end
