@@ -1,5 +1,7 @@
 <h1><%= @word.name %></h1>
 
+<%= link_to "Flag this", word_flaggings_path(@word), method: :post %>
+
 <div class="word-tags">
   <% @word.tags.each do |tag| %>
     <span><%= link_to tag.name, tag_path(tag) %></span>
