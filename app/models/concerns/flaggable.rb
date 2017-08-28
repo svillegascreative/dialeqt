@@ -17,6 +17,14 @@ module Flaggable
     end
   end
 
+  def toggle_flag_by(user)
+    if flagged_by?(user)
+      unflag_by(user)
+    else
+      flag_by(user)
+    end
+  end
+
   def flags_by(user)
     flaggings.where(flagger_id: user.id, flagger_type: user.class.to_s)
   end
