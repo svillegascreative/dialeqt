@@ -1,6 +1,6 @@
 <h3>Definition</h3>
 
-<%= link_to "Flag this", new_definition_flagging_path(definition) %>
+<%= render partial: "flaggings/flagging", locals: {item: definition} %>
 
 
 <p class="def-details"><%= definition.details %></p>
