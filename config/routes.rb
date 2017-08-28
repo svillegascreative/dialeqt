@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     collection do
       get 'check', to: 'words#check'
     end
-    resources :flaggings, except: [:index, :show, :new]
+    resources :flaggings, only: [:new, :create, :destroy]
     resources :definitions, only: [:new, :create]
   end
 
@@ -22,9 +22,8 @@ Rails.application.routes.draw do
       put 'upvote', to: 'definitions#upvote'
       put 'downvote', to: 'definitions#downvote'
     end
-    resources :flaggings, except: [:index, :show, :new]
+    resources :flaggings, only: [:new, :create, :destroy]
   end
 
   resources :tags, only: [:index, :show]
-  # resources :flaggings, except: [:index, :show]
 end
