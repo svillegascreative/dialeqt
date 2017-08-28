@@ -9,9 +9,9 @@ class FlaggingsController < ApplicationController
     @flagging = current_user.flaggings.build(get_flaggable_params)
     @flaggable = get_flaggable
     if @flagging.save
-      flash[:notice] = "saved"
+      flash[:notice] = "Thank you for calling this #{@flagging.reason} #{@flaggable.class.to_s.downcase} to our attention."
     else
-      flash[:alert] = "failed"
+      flash[:alert] = "The flag could not be saved. Please try again."
     end
     redirect_to @flaggable
   end
