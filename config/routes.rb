@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       put 'upvote', to: 'definitions#upvote'
       put 'downvote', to: 'definitions#downvote'
     end
+    resources :flaggings, except: [:index, :show, :new]
   end
 
   resources :tags, only: [:index, :show]
