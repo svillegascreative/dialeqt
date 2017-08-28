@@ -13,7 +13,7 @@ class FlaggingsController < ApplicationController
     else
       flash[:alert] = "The flag could not be saved. Please try again."
     end
-    redirect_to @flaggable
+      redirect_to root_url
   end
 
   def destroy
