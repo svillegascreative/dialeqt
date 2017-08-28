@@ -1,5 +1,8 @@
 <h3>Definition</h3>
 
+<%= link_to "Flag this", definition_flaggings_path(definition), method: :post %>
+
+
 <p class="def-details"><%= definition.details %></p>
 <p class="def-example"><%= definition.example %></p>
 
