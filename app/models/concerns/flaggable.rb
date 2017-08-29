@@ -13,7 +13,7 @@ module Flaggable
 
   def unflag_by(user)
     if flagged_by?(user)
-      flags_by(user).last.destroy
+      last_flagging_by(user).destroy
     end
   end
 
@@ -31,6 +31,10 @@ module Flaggable
 
   def flagged_by?(user)
     flags_by(user).size > 0
+  end
+
+  def last_flagging_by(user)
+    flags_by(user).last
   end
 
   module ClassMethods
