@@ -1,5 +1,5 @@
 <% if item.flagged_by?(current_user) %>
-  <%= link_to "Flagged", polymorphic_url([item, :flagging]), method: :delete,
+  <%= link_to "Flagged", polymorphic_url([item, item.last_flagging_by(current_user)]), method: :delete,
       data: {confirm: "Are you sure you want to unflag this #{item.class.to_s.downcase}"} %>
 <% else %>
   <%= link_to "Flag this", polymorphic_url([item, :flagging], action: :new) %>
