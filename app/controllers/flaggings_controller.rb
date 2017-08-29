@@ -17,7 +17,10 @@ class FlaggingsController < ApplicationController
   end
 
   def destroy
-    #code
+    @flaggable = get_flaggable
+    @flaggable.unflag_by(current_user)
+    flash[:notice] = "Your flag was removed."
+    redirect_to root_url
   end
 
 private
