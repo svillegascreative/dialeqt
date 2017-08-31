@@ -10,21 +10,26 @@
   </head>
 
   <body>
-    <header>
-      <%= link_to root_url do %>
-        <h1>dialeqt</h1>
+    <div class="container">
+
+      <header>
+        <%= link_to root_url do %>
+          <h1>dialeqt</h1>
+        <% end %>
+        <%= render "shared/navigation" %>
+        <%= render "search/form" %>
+      </header>
+
+      <% flash.each do |key, message| %>
+        <div class="flash flash-<%= key %>">
+          <%= message %>
+        </div>
       <% end %>
-      <%= render "shared/navigation" %>
-      <%= render "search/form" %>
-    </header>
 
-    <% flash.each do |key, message| %>
-      <div class="flash flash-<%= key %>">
-        <%= message %>
-      </div>
-    <% end %>
+      <main>
+        <%= yield %>
+      </main>
 
-    <%= yield %>
-
+    </div>
   </body>
 </html>
