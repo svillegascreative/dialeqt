@@ -1,0 +1,24 @@
+@import 'normalize';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+// base styles
+@import 'base/variables';
+@import 'base/typography';
+@import 'base/lists';
+@import 'base/forms';
+
+// layout
+@import 'layout';
+@import 'header';
+@import 'footer';
+
+// components
+@import 'flaggings';
+@import 'search';
+@import 'tags';
+@import 'words';
