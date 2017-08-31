@@ -1,1 +1,22 @@
+body {
+  color: $base-font-color;
+}
 
+// headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
+}
+
+
+// anchors
+a,
+a:hover,
+a:active,
+a:visited {
+  @include base-anchor
+}

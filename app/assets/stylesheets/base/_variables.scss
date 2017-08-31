@@ -1,1 +1,16 @@
+// Palette
+$dark-gray: #333;
 
+
+// Typography
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+$base-font: "";
+$brand-font: "Quicksand";
+$heading-font: $brand-font;
+
+$base-font-color: $dark-gray;
+
+@mixin base-anchor {
+  text-decoration: none;
+}
