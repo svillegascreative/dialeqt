@@ -1,4 +1,5 @@
 class FlaggingsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @flaggable = get_flaggable
