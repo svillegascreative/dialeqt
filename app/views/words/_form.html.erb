@@ -3,7 +3,7 @@
   <%= render "shared/errors", object: @word %>
 
     <div class="form-field">
-      <%= f.label :name %>
+      <%= f.label :name, "Word" %><br />
       <% if @word.has_votes_or_definitions? %>
         <%= f.text_field :name, disabled: "disabled" %>
         <span>Note: You cannot edit a word that has votes or definitions.</span>

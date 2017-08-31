@@ -24,3 +24,10 @@ $small-font-size: $base-font-size * 0.7;
 
 $link-color: $secondary-color;
 $link-color-dark: $secondary-color-dark;
+
+// Spacing
+$line-height-space: $base-line-height + 0rem;
+
+// Forms
+$base-input-border: 1px solid $gray;
+$input-border-focus: $secondary-color-dark;

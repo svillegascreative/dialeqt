@@ -1,0 +1,42 @@
+.form-field {
+  margin-bottom: $line-height-space;
+}
+
+label {
+  display: block;
+  margin: 0 $line-height-space / 2;
+  &+br {
+    display: none;
+  }
+}
+
+.field-helper {
+  font-size: $small-font-size;
+  margin: 0 $line-height-space / 2;
+}
+
+input,
+textarea {
+  // line-height: $base-line-height;
+  border-radius: $line-height-space / 2;
+  border: $base-input-border;
+  padding: 0 $line-height-space / 2;
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin: 3px;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  display: inline-block;
+  margin: 0;
+}
+
+.button-on-right {
+  margin-left: -1 * $line-height-space;
+}
