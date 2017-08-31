@@ -1,16 +1,26 @@
 // Palette
-$dark-gray: #333;
+$gray: gray;
+$light-gray: lightgray;
+$dark-gray: #555;
+$black: #333;
+$primary-color: gray;
+$secondary-color: gray;
+$secondary-color-dark: darken($secondary-color, 20%);
+$action-color: gray;
 
 
 // Typography
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Open+Sans');
 
-$base-font: "";
+$base-font: "Open Sans";
 $brand-font: "Quicksand";
 $heading-font: $brand-font;
 
-$base-font-color: $dark-gray;
+$base-font-color: $black;
+$base-font-size: 16px;
+$base-line-height: 1.4;
 
-@mixin base-anchor {
-  text-decoration: none;
-}
+$small-font-size: $base-font-size * 0.7;
+
+$link-color: $secondary-color;
+$link-color-dark: $secondary-color-dark;

@@ -1,5 +1,8 @@
 body {
+  font-family: $base-font;
+  font-size: $base-font-size;
   color: $base-font-color;
+  line-height: $base-line-height;
 }
 
 // headings
@@ -14,9 +17,13 @@ h6 {
 
 
 // anchors
-a,
-a:hover,
-a:active,
-a:visited {
-  @include base-anchor
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    color: $link-color-dark;
+  }
+  &:visited {
+    color: $link-color-dark;
+  }
 }
