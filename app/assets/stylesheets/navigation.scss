@@ -6,3 +6,18 @@ nav {
     text-align: center;
   }
 }
+
+@media (min-width: $medium-screen-min) {
+
+  nav {
+    grid-area: nav;
+    ul {
+      text-align: right;
+      li {
+        display: inline-block;
+        margin: 0 $small-gap;
+      }
+    }
+  }
+
+}
