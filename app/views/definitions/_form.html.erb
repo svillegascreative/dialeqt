@@ -1,10 +1,17 @@
 <div class="form-field">
-  <%= f.label :details %><br />
-  <%= f.text_area :details %>
+  <%= f.label :details, "Definition" %><br />
+  <div class="field-helper">
+    Write a concise definition for "<%= @word.name %>".
+  </div>
+  <%= f.text_area :details, required: "required" %>
 </div>
 
 <div class="form-field">
   <%= f.label :example %><br />
+  <div class="field-helper">
+    Provide an example of how "<%= @word.name %>" is used in an original
+    sentence, or quoted text (please provide the source).
+  </div>
   <%= f.text_area :example %>
 </div>
 

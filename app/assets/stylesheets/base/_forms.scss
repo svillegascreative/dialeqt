@@ -26,6 +26,11 @@ textarea {
   }
 }
 
+textarea {
+  width: 100%;
+  height: 100px;
+}
+
 input[type="checkbox"],
 input[type="radio"] {
   margin: 3px;
