@@ -1,4 +1,13 @@
 .search-form {
-  margin: 1rem;
   text-align: center;
+}
+
+@media (min-width: $medium-screen-min) {
+  
+  .search-form {
+    grid-area: search;
+    text-align: right;
+    margin: $small-gap;
+  }
+
 }
