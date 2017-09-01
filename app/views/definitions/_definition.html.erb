@@ -1,16 +1,30 @@
-<h3>Definition</h3>
+<div class="definition">
 
-<%= render partial: "flaggings/flagging", locals: {item: definition} %>
+  <div class="def-flag">
+    <%= render partial: "flaggings/flagging", locals: {item: definition} %>
+  </div>
 
+  <div class="def-definition">
+    <h4>Definition</h4>
+    <%= definition.details %>
+  </div>
 
-<p class="def-details"><%= definition.details %></p>
-<p class="def-example"><%= definition.example %></p>
+  <% if !definition.example.blank? %>
+    <div class="def-example">
+      <h4>Example</h4>
+      <%= definition.example %>
+    </div>
+  <% end %>
 
-<%= render partial: "shared/author", locals: {item: definition} %>
+  <div class="def-author">
+    <%= render partial: "shared/author", locals: {item: definition} %>
+  </div>
 
-<div class="def-votes">
-  <%= link_to "vote up", upvote_definition_path(definition), method: :put %>
-  (<%= definition.get_up_votes.size %>)
-  <%= link_to "vote down", downvote_definition_path(definition), method: :put %>
-  (<%= definition.get_down_votes.size %>)
+  <div class="def-votes">
+    <%= link_to "vote up", upvote_definition_path(definition), method: :put %>
+    (<%= definition.get_up_votes.size %>)
+    <%= link_to "vote down", downvote_definition_path(definition), method: :put %>
+    (<%= definition.get_down_votes.size %>)
+  </div>
+
 </div>
