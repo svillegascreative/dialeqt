@@ -5,10 +5,13 @@
   grid-template-areas: "header"
                        "main"
                        "footer";
+  grid-gap: 1rem;
+  padding: 1rem;
 }
 
 header {
   grid-area: header;
+  background: $light-gray;
 }
 
 main {
@@ -16,5 +19,7 @@ main {
 }
 
 footer {
-  grid-area: footer,
+  grid-area: footer;
+  background: $light-gray;
+  padding: 1rem;
 }
