@@ -1,3 +1,49 @@
-// Place all the styles related to the words controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.word-container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(8, auto);
+  grid-template-areas: "name"
+                       "flag"
+                       "tags"
+                       "author"
+                       "votes"
+                       "related"
+                       "definitions"
+                       "form";
+}
+
+.word-name {
+  grid-area: name;
+}
+
+.word-flag {
+  grid-area: flag;
+  text-align: center;
+}
+
+.word-tags {
+  grid-are: tags;
+  text-align: center;
+}
+
+.word-author {
+  grid-area: author;
+  text-align: center;
+}
+
+.word-votes {
+  grid-area: votes;
+  text-align: center;
+}
+
+.word-related {
+  grid-area: related;
+}
+
+.word-definitions {
+  grid-area: definitions;
+}
+
+.definition-form {
+  grid-area: form;
+}

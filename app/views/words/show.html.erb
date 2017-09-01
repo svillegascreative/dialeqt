@@ -1,40 +1,54 @@
-<h1><%= @word.name %></h1>
+<div class="word-container">
 
-<%= render partial: "flaggings/flagging", locals: {item: @word} %>
+  <h1 class="word-name"><%= @word.name %></h1>
 
-<div class="word-tags">
-  <% @word.tags.each do |tag| %>
-    <span><%= link_to tag.name, tag_path(tag) %></span>
-  <% end %>
-  <% if current_user == @word.user %>
-    <%= link_to "Add tag", edit_word_path(@word) %>
-  <% end %>
-</div>
-
-<%= render partial: "shared/author", locals: {item: @word} %>
-
-<div class="word-votes">
-  <%= link_to "like", like_word_path(@word), method: :put %> (<%= @word.cached_votes_up %>)
-  <%= link_to "dislike", dislike_word_path(@word), method: :put %> (<%= @word.cached_votes_down %>)
-</div>
-
-<% if !@related_words.blank? %>
-  <div class="related-words">
-    <h3>Related words:</h3>
-    <% @related_words.each do |w| %>
-    <%= link_to w.name, word_path(w) %>
-    <% end %>
+  <div class="word-flag">
+    <%= render partial: "flaggings/flagging", locals: {item: @word} %>
   </div>
-<% end %>
 
-<% if @definitions %>
-    <%= render @definitions %>
-<% end %>
-
-<% if current_user %>
-  <h3>Add a Definition</h3>
-  <%= form_for [@word, @new_definition] do |f| %>
-    <%= render "shared/errors", object: @new_definition %>
-    <%= render partial: "definitions/form", locals: {f: f} %>
+  <% if !@word.tags.blank? %>
+    <div class="word-tags">
+      <% @word.tags.each do |tag| %>
+        <span><%= link_to tag.name, tag_path(tag) %></span>
+      <% end %>
+      <% if current_user == @word.user %>
+        <%= link_to "Add tag", edit_word_path(@word) %>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+
+  <div class="word-author">
+    <%= render partial: "shared/author", locals: {item: @word} %>
+  </div>
+
+  <div class="word-votes">
+    <%= link_to "like", like_word_path(@word), method: :put %> (<%= @word.cached_votes_up %>)
+    <%= link_to "dislike", dislike_word_path(@word), method: :put %> (<%= @word.cached_votes_down %>)
+  </div>
+
+  <% if !@related_words.blank? %>
+    <div class="word-related">
+      <h3>Related words:</h3>
+      <% @related_words.each do |w| %>
+      <%= link_to w.name, word_path(w) %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @definitions %>
+    <div class="word-definitions">
+      <%= render @definitions %>
+    </div>
+  <% end %>
+
+  <% if current_user %>
+    <div class="definition-form">
+      <h3>Add a Definition</h3>
+      <%= form_for [@word, @new_definition] do |f| %>
+      <%= render "shared/errors", object: @new_definition %>
+      <%= render partial: "definitions/form", locals: {f: f} %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
