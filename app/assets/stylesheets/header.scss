@@ -1,2 +1,22 @@
 .masthead {
+  h1 {
+    margin: 0;
+  }
+}
+
+@media (min-width: $medium-screen-min) {
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "logo nav"
+      "logo search"
+  }
+  .masthead {
+    grid-area: logo;
+    align-self: center;
+    text-align: left;
+  }
 }
