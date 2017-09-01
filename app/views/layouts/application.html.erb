@@ -13,9 +13,11 @@
     <div class="container">
 
       <header>
-        <%= link_to root_url do %>
+        <div class="masthead">
+          <%= link_to root_url do %>
           <h1>dialeqt</h1>
-        <% end %>
+          <% end %>
+        </div>
         <%= render "shared/navigation" %>
         <%= render "search/form" %>
       </header>
