@@ -1,7 +1,7 @@
 <nav>
   <ul>
-    <li><%= link_to "Words", words_path %></li>
-    <li><%= link_to "Random Word!", word_path(Word.random) %></li>
+    <li><%= link_to "Browse", words_path %></li>
+    <li><%= link_to "Random", word_path(Word.random) %></li>
   <% if current_user %>
     <li><%= link_to "Add a Word", new_word_path %></li>
     <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
