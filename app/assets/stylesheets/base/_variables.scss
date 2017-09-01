@@ -1,3 +1,12 @@
+// Breakpoints
+$mini-screen-max: 400px;
+$small-screen-min: $mini-screen-max + 1px;
+$small-screen-max: 650px;
+$medium-screen-min: $small-screen-max + 1px;
+$medium-screen-max: 900px;
+$large-screen-min: $medium-screen-max + 1px;
+
+
 // Palette
 $gray: gray;
 $light-gray: lightgray;
