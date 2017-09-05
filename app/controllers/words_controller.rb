@@ -3,7 +3,13 @@ class WordsController < ApplicationController
   before_action :find_word, except: [:index, :new, :check, :create]
 
   def index
-    @words = Word.all.order_by_best_wilson_score
+    if params[:undefined].present?
+      @words = Word.undefined
+    elsif params[:recent].present?
+      @words = Word.recent
+    else
+      @words = Word.all.order_by_best_wilson_score
+    end
   end
 
   def show

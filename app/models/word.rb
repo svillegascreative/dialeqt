@@ -19,6 +19,9 @@ class Word < ApplicationRecord
     blacklist: %W{new edit},
     blacklist_policy: :blacklist_policy
 
+  scope :recent, -> { where("created_at < ?", 1.week.ago) }
+  scope :undefined, -> { includes(:definitions).where(definitions: {word_id: nil}) }
+
   def self.find(input)
     find_by_slug(input)
   end
