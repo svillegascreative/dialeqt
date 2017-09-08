@@ -17,6 +17,9 @@
   .masthead {
     grid-area: logo;
     align-self: center;
-    text-align: left;
+    h1 {
+      text-align: left;
+      margin-left: 1em;
+    }
   }
 }
