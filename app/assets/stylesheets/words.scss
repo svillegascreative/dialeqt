@@ -1,34 +1,39 @@
 .word-container {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: repeat(8, auto);
-  grid-template-areas: "name"
-                       "flag"
-                       "tags"
-                       "author"
-                       "votes"
-                       "related"
-                       "definitions"
-                       "form";
+  grid-template-rows: repeat(7, auto);
+  grid-template-areas:
+    "name"
+    "tags"
+    "meta"
+    "votes"
+    "related"
+    "definitions"
+    "form";
 }
 
 .word-name {
   grid-area: name;
 }
 
-.word-flag {
-  grid-area: flag;
-  text-align: center;
-}
-
 .word-tags {
   grid-are: tags;
   text-align: center;
 }
+.word-meta {
+  grid-area: meta;
+  text-align: center;
+}
+.word-flag {
+  // grid-area: flag;
+  // text-align: center;
+  display: inline-block;
+}
 
 .word-author {
-  grid-area: author;
-  text-align: center;
+  // grid-area: author;
+  // text-align: center;
+  display: inline-block;
 }
 
 .word-votes {

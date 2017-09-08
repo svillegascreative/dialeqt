@@ -1,10 +1,7 @@
-<div class="word-container">
+<article class="word-container">
 
   <h1 class="word-name"><%= @word.name %></h1>
 
-  <div class="word-flag">
-    <%= render partial: "flaggings/flagging", locals: {item: @word} %>
-  </div>
 
   <% if !@word.tags.blank? %>
     <div class="word-tags">
@@ -17,8 +14,13 @@
     </div>
   <% end %>
 
-  <div class="word-author">
-    <%= render partial: "shared/author", locals: {item: @word} %>
+  <div class="word-meta">
+    <div class="word-author">
+      <%= render partial: "shared/author", locals: {item: @word} %>
+    </div>
+    <div class="word-flag">
+      <%= render partial: "flaggings/flagging", locals: {item: @word} %>
+    </div>
   </div>
 
   <div class="word-votes">
@@ -51,4 +53,4 @@
     </div>
   <% end %>
 
-</div>
+</article>
