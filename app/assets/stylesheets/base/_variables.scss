@@ -40,6 +40,13 @@ $line-height-space: $base-line-height + 0rem;
 $base-gap: 1rem;
 $small-gap: 0.5rem;
 
+// Lists
+@mixin unstyled-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 // Forms
 $base-input-border: 1px solid $gray;
 $input-border-focus: $secondary-color-dark;

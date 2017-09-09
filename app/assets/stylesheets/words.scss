@@ -1,5 +1,29 @@
+// WORD LISTS
+.words-list {
+  @include unstyled-list;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: $small-gap;
+  li {
+    background: $very-light-gray;
+    padding: $small-gap;
+    text-align: center;
+    &:nth-child(2n) {
+      background: darken($very-light-gray, 5%);
+    }
+    &:nth-child(3n) {
+      background: adjust-hue($light-gray, 20);
+    }
+    &:nth-child(7n) {
+      background: transparentize($light-gray, 0.12);
+    }
+  }
+}
+
+
+// WORD PAGES
 .word-page {
-  
+
 }
 
 .word-container {
