@@ -5,14 +5,14 @@ class VotesController < ApplicationController
     @votable = get_votable
     @votable.toggle_upvote current_user
     @votable.update_wilson_score
-    # redirect_to @votable
+    redirect_back fallback_location: root_url
   end
 
   def destroy
     @votable = get_votable
     @votable.toggle_downvote current_user
     @votable.update_wilson_score
-    # redirect_to @votable
+    redirect_back fallback_location: root_url
   end
 
 private
