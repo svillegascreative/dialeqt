@@ -17,14 +17,19 @@
     </div>
   <% end %>
 
-  <% if current_user %>
-    <div class="definition-form">
+  <div class="definition-form">
+    <% if current_user %>
       <h2>Add a definition for "<%= @word.name %>"</h2>
       <%= form_for [@word, @new_definition] do |f| %>
       <%= render "shared/errors", object: @new_definition %>
       <%= render partial: "definitions/form", locals: {f: f} %>
       <% end %>
-    </div>
-  <% end %>
+    <% else %>
+      <h2>Want to add a definition?</h2>
+      <p>Only registered members can add new words &amp; definitions, and vote on existing ones.
+      Why not <%= link_to "sign up", new_user_registration_path %> today?</p>
+      <p>Already a member? <%= link_to "Log in", new_user_session_path %>.</p>
+    <% end %>
+  </div>
 
 </article>
