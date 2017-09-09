@@ -1,29 +1,35 @@
 .definition {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: repeat(5, auto);
+  grid-template-rows: repeat(4, auto);
   grid-template-areas:
-    "flag"
     "definition"
     "example"
-    "author"
+    "meta"
     "votes";
   grid-gap: $small-gap;
-}
-
-.def-flag {
-  grid-area: flag;
+  margin: 2rem 0;
 }
 
 .def-details {
   grid-area: definition;
 }
+
 .def-example {
   grid-area: example;
 }
-.def-author {
-  grid-area: author;
+
+.def-meta {
+  grid-area: meta;
+  font-size: $small-font-size;
 }
+
+.def-author {
+}
+
+.def-flag {
+}
+
 .def-votes {
   grid-area: votes;
 }

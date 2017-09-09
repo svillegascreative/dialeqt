@@ -1,9 +1,5 @@
 <div class="definition">
 
-  <div class="def-flag">
-    <%= render partial: "flaggings/flagging", locals: {item: definition} %>
-  </div>
-
   <div class="def-definition">
     <h4>Definition</h4>
     <%= definition.details %>
@@ -16,8 +12,13 @@
     </div>
   <% end %>
 
-  <div class="def-author">
-    <%= render partial: "shared/author", locals: {item: definition} %>
+  <div class="def-meta">
+    <span class="def-author">
+      <%= render partial: "shared/author", locals: {item: definition} %>
+    </span>
+    <span class="def-flag">
+      <%= render partial: "flaggings/flagging", locals: {item: definition} %>
+    </span>
   </div>
 
   <div class="def-votes">
