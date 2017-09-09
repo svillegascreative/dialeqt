@@ -42,26 +42,6 @@ class DefinitionsController < ApplicationController
     end
   end
 
-  def upvote
-    if current_user.voted_up_on? @definition
-      @definition.unvote_by current_user
-    else
-      @definition.vote_up current_user
-    end
-    @definition.update_wilson_score
-    redirect_to @definition.word
-  end
-
-  def downvote
-    if current_user.voted_down_on? @definition
-      @definition.unvote_by current_user
-    else
-      @definition.vote_down current_user
-    end
-    @definition.update_wilson_score
-    redirect_to @definition.word
-  end
-
 private
 
   def find_definition

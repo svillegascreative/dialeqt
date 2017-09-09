@@ -69,18 +69,6 @@ class WordsController < ApplicationController
     end
   end
 
-  def like
-    @word.toggle_upvote current_user
-    @word.update_wilson_score
-    redirect_to @word
-  end
-
-  def dislike
-    @word.toggle_downvote current_user
-    @word.update_wilson_score
-    redirect_to @word
-  end
-
 private
 
   def find_word
