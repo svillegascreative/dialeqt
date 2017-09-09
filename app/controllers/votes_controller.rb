@@ -18,10 +18,9 @@ class VotesController < ApplicationController
 private
 
   def get_votable
-    if params[:word_id]
-      Word.find(params[:word_id])
-    elsif params[:definition_id]
-      Definition.find(params[:definition_id])
+    if model = params.keys.find { |k| k.end_with? "_id"}
+      klass = model.chomp("_id").capitalize.constantize
+      klass.find(params["#{model}"])
     end
   end
 
