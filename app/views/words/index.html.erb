@@ -1,3 +1,8 @@
+<ul class="words-list-tabs">
+  <li class="words-list-tab"><%= link_to "New", words_path(recent: true) %></li>
+  <li class="words-list-tab"><%= link_to "Undefined", words_path(undefined: true) %></li>
+</ul>
+
 <ul class="words-list">
   <% @words.each do |word| %>
     <li>

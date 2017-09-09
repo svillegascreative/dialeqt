@@ -1,4 +1,12 @@
 // WORD LISTS
+.words-list-tabs {
+  @include unstyled-list;
+  margin-bottom: $base-gap;
+  li {
+    display: inline-block;
+  }
+}
+
 .words-list {
   @include unstyled-list;
   display: grid;
