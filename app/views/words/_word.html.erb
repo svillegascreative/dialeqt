@@ -1,0 +1,27 @@
+<h1 class="word-name"><%= word.name %></h1>
+
+
+<% if !word.tags.blank? %>
+  <div class="word-tags">
+    <% word.tags.each do |tag| %>
+      <span><%= link_to tag.name, tag_path(tag) %></span>
+    <% end %>
+    <% if current_user == word.user %>
+      <%= link_to "Add tag", edit_word_path(word) %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="word-meta">
+  <div class="word-author">
+    <%= render partial: "shared/author", locals: {item: word} %>
+  </div>
+  <div class="word-flag">
+    <%= render partial: "flaggings/flagging", locals: {item: word} %>
+  </div>
+</div>
+
+<div class="word-votes">
+  <%= link_to "like", word_votes_path(word), method: :post %> (<%= word.cached_votes_up %>)
+  <%= link_to "dislike", word_vote_path(word), method: :delete %> (<%= word.cached_votes_down %>)
+</div>
