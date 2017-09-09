@@ -17,6 +17,8 @@ header {
 
 main {
   grid-area: main;
+  max-width: 600px;
+  justify-self: center;
 }
 
 footer {
