@@ -9,6 +9,7 @@ $large-screen-min: $medium-screen-max + 1px;
 
 // Palette
 $gray: gray;
+$very-light-gray: #efefef;
 $light-gray: lightgray;
 $dark-gray: #555;
 $black: #333;
@@ -29,7 +30,7 @@ $base-font-color: $black;
 $base-font-size: 16px;
 $base-line-height: 1.4;
 
-$small-font-size: $base-font-size * 0.7;
+$small-font-size: $base-font-size * 0.8;
 
 $link-color: $secondary-color;
 $link-color-dark: $secondary-color-dark;
