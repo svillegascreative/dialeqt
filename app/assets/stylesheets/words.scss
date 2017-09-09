@@ -76,6 +76,12 @@
 
 .word-related {
   grid-area: related;
+  h3 {
+    margin-bottom:0;
+  }
+  a {
+    margin-right: $base-gap;
+  }
 }
 
 .word-definitions {
