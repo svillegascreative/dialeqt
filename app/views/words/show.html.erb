@@ -24,8 +24,8 @@
   </div>
 
   <div class="word-votes">
-    <%= link_to "like", like_word_path(@word), method: :put %> (<%= @word.cached_votes_up %>)
-    <%= link_to "dislike", dislike_word_path(@word), method: :put %> (<%= @word.cached_votes_down %>)
+    <%= link_to "like", word_votes_path(word), method: :post %> (<%= word.cached_votes_up %>)
+    <%= link_to "dislike", word_vote_path(word), method: :delete %> (<%= word.cached_votes_down %>)
   </div>
 
   <% if !@related_words.blank? %>
