@@ -15,9 +15,11 @@ label {
   margin: 0 $line-height-space / 2;
 }
 
+
+// INPUTS
+
 input,
 textarea {
-  // line-height: $base-line-height;
   border-radius: $line-height-space / 2;
   border: $base-input-border;
   padding: 0 $line-height-space / 2;
@@ -40,6 +42,16 @@ input[type="checkbox"] + label,
 input[type="radio"] + label {
   display: inline-block;
   margin: 0;
+}
+
+
+// BUTTONS
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.button {
+  background-color: $color2;
+  color: $color2-darker;
 }
 
 .button-on-right {

@@ -13,6 +13,7 @@ h4,
 h5,
 h6 {
   font-family: $heading-font;
+  color: $heading-color;
 }
 h1 {
   text-align: center;
@@ -29,9 +30,9 @@ a {
   color: $link-color;
   text-decoration: none;
   &:hover {
-    color: $link-color-dark;
+    color: $link-color-hover;
   }
   &:visited {
-    color: $link-color-dark;
+    color: $link-color-visited;
   }
 }

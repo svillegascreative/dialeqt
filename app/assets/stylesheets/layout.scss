@@ -11,8 +11,6 @@
 
 header {
   grid-area: header;
-  background: $light-gray;
-  padding: $small-gap;
 }
 
 main {
@@ -21,6 +19,15 @@ main {
 
 footer {
   grid-area: footer;
-  background: $light-gray;
-  padding: 1rem;
+}
+
+header,
+footer {
+  background: $color1-lighter;
+  padding: $small-gap;
+  a,
+  a:hover,
+  a:visited {
+    color: $color1;
+  }
 }

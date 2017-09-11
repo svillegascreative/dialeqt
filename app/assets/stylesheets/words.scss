@@ -13,14 +13,17 @@
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   grid-gap: $small-gap;
   li {
-    background: $very-light-gray;
+    background: $gray;
     padding: $small-gap;
     text-align: center;
     &:nth-child(2n) {
-      background: darken($very-light-gray, 5%);
+      background: darken($light-gray, 10%);
     }
     &:nth-child(3n) {
-      background: adjust-hue($light-gray, 20);
+      background: adjust-hue($light-gray, -80);
+    }
+    &:nth-child(5n) {
+      background: adjust-hue($gray, -40);
     }
     &:nth-child(7n) {
       background: transparentize($light-gray, 0.12);

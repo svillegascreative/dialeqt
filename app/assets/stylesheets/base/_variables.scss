@@ -1,3 +1,48 @@
+/* PALETTE
+---------------------------------------------------------------------*/
+$color1: rgba(96, 59, 90, 1);
+$color1-dark: darken($color1, 10%);
+$color1-darker: darken($color1, 20%);
+$color1-light: desaturate(lighten($color1, 10%), 15%);
+$color1-lighter: desaturate(lighten($color1, 30%), 10%);
+$color1-lightest: desaturate(lighten($color1, 50%), 10%);
+
+$color2: rgba(151, 220, 239, 1);
+$color2-dark: darken($color2, 20%);
+$color2-darker: darken($color2, 40%);
+$color2-light: lighten($color2, 10%);
+$color2-lighter: lighten($color2, 20%);
+
+$gray: desaturate(lighten($color1, 50%), 10%);
+$light-gray: lighten($gray, 8%);
+$very-light-gray: lighten($gray, 12%);
+$dark-gray: darken($gray, 15%);
+$black: #444;
+
+
+/* TYPOGRAPHY
+---------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Open+Sans');
+
+$base-font: "Open Sans";
+$base-font-color: $black;
+$base-font-size: 16px;
+$base-line-height: 1.4;
+$small-font-size: $base-font-size * 0.8;
+
+// Headings
+$brand-font: "Quicksand";
+$heading-font: $brand-font;
+$heading-color: $color1;
+
+// Links
+$link-color: $color2-dark;
+$link-color-hover: $color2-darker;
+$link-color-visited: $color2-darker;
+
+
+/* LAYOUT
+---------------------------------------------------------------------*/
 // Breakpoints
 $mini-screen-max: 400px;
 $small-screen-min: $mini-screen-max + 1px;
@@ -6,40 +51,14 @@ $medium-screen-min: $small-screen-max + 1px;
 $medium-screen-max: 900px;
 $large-screen-min: $medium-screen-max + 1px;
 
-
-// Palette
-$gray: gray;
-$very-light-gray: #efefef;
-$light-gray: lightgray;
-$dark-gray: #555;
-$black: #333;
-$primary-color: gray;
-$secondary-color: gray;
-$secondary-color-dark: darken($secondary-color, 20%);
-$action-color: gray;
-
-
-// Typography
-@import url('https://fonts.googleapis.com/css?family=Quicksand|Open+Sans');
-
-$base-font: "Open Sans";
-$brand-font: "Quicksand";
-$heading-font: $brand-font;
-
-$base-font-color: $black;
-$base-font-size: 16px;
-$base-line-height: 1.4;
-
-$small-font-size: $base-font-size * 0.8;
-
-$link-color: $secondary-color;
-$link-color-dark: $secondary-color-dark;
-
 // Spacing
 $line-height-space: $base-line-height + 0rem;
 $base-gap: 1rem;
 $small-gap: 0.5rem;
 
+
+/* ELEMENTS
+---------------------------------------------------------------------*/
 // Lists
 @mixin unstyled-list {
   list-style-type: none;
@@ -47,6 +66,8 @@ $small-gap: 0.5rem;
   padding: 0;
 }
 
-// Forms
-$base-input-border: 1px solid $gray;
-$input-border-focus: $secondary-color-dark;
+
+/* FORMS
+---------------------------------------------------------------------*/
+$base-input-border: 1px solid $color2;
+$input-border-focus: $color2-dark;
