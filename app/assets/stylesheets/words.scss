@@ -10,24 +10,38 @@
 .words-list {
   @include unstyled-list;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  grid-gap: $small-gap;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-gap: $base-gap;
   li {
     background: $gray;
     padding: $small-gap;
     text-align: center;
     &:nth-child(2n) {
-      background: darken($light-gray, 10%);
+      background: darken($gray, 5%);
     }
-    &:nth-child(3n) {
-      background: adjust-hue($light-gray, -80);
+    &:nth-child(3n -1) {
+      background: adjust-hue($gray, -80);
     }
     &:nth-child(5n) {
       background: adjust-hue($gray, -40);
     }
     &:nth-child(7n) {
-      background: transparentize($light-gray, 0.12);
+      background: transparentize($gray, 0.12);
     }
+  }
+
+  a {
+    background: transparentize($lighter-gray, 0.3);
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    // margin: $small-gap;
+    padding: $small-gap;
+  }
+
+  p {
+    font-size: $small-font-size;
+    color: $black;
   }
 }
 
