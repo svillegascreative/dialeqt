@@ -5,6 +5,9 @@ nav {
     padding: 0;
     text-align: center;
   }
+  a {
+    font-weight: bold;
+  }
 }
 
 @media (min-width: $medium-screen-min) {
