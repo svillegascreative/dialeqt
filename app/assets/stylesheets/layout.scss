@@ -23,11 +23,11 @@ footer {
 
 header,
 footer {
-  background: $color1-lighter;
+  background: $color1;
   padding: $small-gap;
   a,
   a:hover,
   a:visited {
-    color: $lighter-gray;
+    color: $light-gray;
   }
 }
