@@ -15,7 +15,7 @@ $color2-lighter: lighten($color2, 20%);
 
 $gray: desaturate(lighten($color1, 50%), 10%);
 $light-gray: lighten($gray, 8%);
-$very-light-gray: lighten($gray, 12%);
+$lighter-gray: lighten($gray, 12%);
 $dark-gray: darken($gray, 15%);
 $black: #444;
 
