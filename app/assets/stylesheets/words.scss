@@ -13,36 +13,45 @@
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   grid-gap: $base-gap;
   li {
-    background: $gray;
+    background: $color1-lighter;
     padding: $small-gap;
     text-align: center;
     &:nth-child(2n) {
-      background: darken($gray, 5%);
+      background: darken($color1-lighter, 5%);
     }
     &:nth-child(3n -1) {
-      background: adjust-hue($gray, -80);
+      background: adjust-hue($color1-lighter, -80);
     }
     &:nth-child(5n) {
-      background: adjust-hue($gray, -40);
+      background: adjust-hue($color1-lighter, -40);
     }
     &:nth-child(7n) {
-      background: transparentize($gray, 0.12);
+      background: transparentize($color1-lighter, 0.12);
     }
   }
 
   a {
-    background: transparentize($lighter-gray, 0.3);
+    background: transparentize($lighter-gray, 0.2);
     display: inline-block;
     height: 100%;
     width: 100%;
     // margin: $small-gap;
     padding: $small-gap;
+    p {
+      font-size: $small-font-size;
+      color: $black;
+    }
+    span {
+      color: $link-color;
+    }
+    &:hover span {
+      color: $link-color-hover;
+    }
+    &:visited span {
+      color: $link-color-visited;
+    }
   }
 
-  p {
-    font-size: $small-font-size;
-    color: $black;
-  }
 }
 
 
