@@ -7,7 +7,7 @@
     "example"
     "meta"
     "votes";
-  grid-gap: $small-gap;
+  grid-gap: $base-gap;
   margin: 2rem 0;
   background: $lighter-gray;
   padding: $base-gap;
@@ -19,6 +19,8 @@
 
 .def-example {
   grid-area: example;
+  color: $color1;
+  font-style: italic;
 }
 
 .def-meta {
