@@ -8,6 +8,12 @@ nav {
   a {
     font-weight: bold;
   }
+  a:hover {
+    color: $link-color;
+  }
+  a:active {
+    color: $link-color-active;
+  }
 }
 
 @media (min-width: $medium-screen-min) {
