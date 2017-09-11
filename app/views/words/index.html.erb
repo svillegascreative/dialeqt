@@ -6,7 +6,13 @@
 <ul class="words-list">
   <% @words.each do |word| %>
     <li>
-      <%= link_to "#{word.name}", word %>
+      <%= link_to word do %>
+        <h4><%= word.name %></h4>
+        <p>
+          <%= word.cached_votes_up %> &#x25B2;, <%= word.cached_votes_down %> &#x25BC;<br />
+          <%= word.definitions.count %> definitions
+        </p>
+      <% end %>
     </li>
   <% end %>
 </ul>
