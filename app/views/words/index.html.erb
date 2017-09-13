@@ -1,6 +1,6 @@
 <ul class="words-list-tabs">
-  <li class="words-list-tab"><%= link_to "New", words_path(recent: true) %></li>
-  <li class="words-list-tab"><%= link_to "Undefined", words_path(undefined: true) %></li>
+  <%= tab_link "New", words_path(recent: true) %>
+  <%= tab_link "Undefined", words_path(undefined: true) %>
 </ul>
 
 <ul class="words-list">

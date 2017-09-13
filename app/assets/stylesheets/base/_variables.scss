@@ -24,14 +24,14 @@ $black: #444;
 ---------------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700|Open+Sans:400,700');
 
-$base-font: "Open Sans";
+$base-font: "Open Sans", sans-serif;
 $base-font-color: $black;
 $base-font-size: 16px;
 $base-line-height: 1.4;
 $small-font-size: $base-font-size * 0.8;
 
 // Headings
-$brand-font: "Quicksand";
+$brand-font: "Quicksand", Tahoma, sans-serif;
 $heading-font: $brand-font;
 $heading-color: $color1;
 
