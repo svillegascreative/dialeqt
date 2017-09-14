@@ -2,8 +2,13 @@
 .words-list-tabs {
   @include unstyled-list;
   margin-bottom: $base-gap;
+  background: $lighter-gray;
   li {
     display: inline-block;
+    padding: $small-gap;
+  }
+  .active {
+    border-bottom: 5px solid $gray;
   }
 }
 
