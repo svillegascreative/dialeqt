@@ -36,11 +36,27 @@
   font-size: 1.5rem;
   #query {
     max-width: 90%;
+    color: $color1;
   }
 }
 
 .splash-menu {
-  @include unstyled-list;
   grid-area: links;
   align-self: end;
+  ul {
+    @include unstyled-list;
+  }
+}
+
+.triangle-down {
+  height: 0;
+  width: 0;
+  border-top: 20px solid $color2;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  margin: $small-gap auto;
+  @include bounce;
+  animation-delay: 3s;
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }
