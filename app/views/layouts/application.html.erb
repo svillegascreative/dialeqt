@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <% if request.url == root_url %>
+      <%= render "shared/splash" %>
+    <% end %>
+
     <div class="container">
 
       <header>
