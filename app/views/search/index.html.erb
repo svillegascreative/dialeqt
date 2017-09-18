@@ -1,8 +1,10 @@
-<h1>Search results for "<%= @query %>"</h1>
+<h1>You asked about "<%= @query %>"...</h1>
 
 <h3>Words</h3>
 <% if @words.blank? %>
-  <p>There are no words that match your search.</p>
+  <p>"<%= @query %>" does not exist in the library.
+  You can <%= link_to "sign up", new_user_registration_path %> or
+  <%= link_to "log in", new_user_session_path %> to add it now.</p>
 <% else %>
   <ul class="search-results">
     <% @words.each do |word| %>
@@ -15,7 +17,7 @@
 
 <h3>Definitions</h3>
 <% if @definitions.blank? %>
-  <p>There are no definitions that match your search.</p>
+  <p>There are no definitions related to "<%= @query %>".</p>
 <% else %>
   <ul class="search-results">
     <% @definitions.each do |definition| %>
