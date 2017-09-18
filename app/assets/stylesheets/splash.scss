@@ -1,0 +1,46 @@
+.splash {
+  background: $color1;
+  height: 100vh;
+  width: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  text-align: center;
+  color: $color1-lightest;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "name"
+    "search"
+    "links";
+}
+
+.splash-heading {
+  grid-area: name;
+  h1 {
+    color: $color2-dark;
+    font-size: 3rem;
+    margin-bottom: 0;
+  }
+  span {
+    color: $color2;
+  }
+  h2 {
+    color: $color2-dark;
+    margin-top: 0;
+  }
+}
+
+.splash-search {
+  grid-area: search;
+  font-size: 1.5rem;
+  #query {
+    max-width: 90%;
+  }
+}
+
+.splash-menu {
+  @include unstyled-list;
+  grid-area: links;
+  align-self: end;
+}
