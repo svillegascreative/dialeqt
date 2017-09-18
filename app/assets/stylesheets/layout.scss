@@ -1,7 +1,8 @@
 .container {
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr minmax(100px, 600px) 1fr;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: max-content auto max-content;
   grid-template-areas: "header header header"
                        "... main ..."
                        "footer footer footer";
