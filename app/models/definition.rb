@@ -5,7 +5,7 @@ class Definition < ApplicationRecord
   include WilsonScorer
   include NiceDateTimer
 
-  belongs_to :word
+  belongs_to :word, counter_cache: true
   belongs_to :user
 
   validates :details, presence: true
